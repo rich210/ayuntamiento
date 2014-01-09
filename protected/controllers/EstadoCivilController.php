@@ -95,6 +95,7 @@ class EstadoCivilController extends Controller
 
 		if (isset($_POST['EstadoCivil'])) {
 			$model->attributes=$_POST['EstadoCivil'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

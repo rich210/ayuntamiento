@@ -196,10 +196,23 @@ class Persona extends CActiveRecord
 	{
 		$opciones=array();
 		$opciones[0]='Seleccionar';
-		$estadoCiviles=EstadoCivil::model()->findAll();
+		$estadoCiviles=EstadoCivil::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
 		foreach($estadoCiviles as $estadoCivil)
 		{
 			$opciones[$estadoCivil->id]=$estadoCivil->nombre_estado_civil;
+		}
+		return $opciones;
+	
+	}
+
+	public function obtenerOcupacion()
+	{
+		$opciones=array();
+		$opciones[0]='Seleccionar';
+		$ocupaciones=Ocupacion::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($ocupaciones as $ocupacion)
+		{
+			$opciones[$ocupacion->id]=$ocupacion->nombre_ocupacion;
 		}
 		return $opciones;
 	

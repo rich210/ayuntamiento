@@ -45,7 +45,7 @@
 
             <?php echo $form->textFieldControlGroup($model,'nivel_estudios_id',array('span'=>5,'maxlength'=>10)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'ocupacion_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'ocupacion_id',$model->obtenerOcupacion()); ?>
 
             <?php echo $form->dropDownListControlGroup($model,'estado_civil_id',$model->obtenerEstadoCivil()); ?>
 
