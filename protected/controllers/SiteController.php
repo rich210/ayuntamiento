@@ -29,7 +29,16 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+		$model= new Cliente;
+		//Yii::app()->request->cookies->clear();
+		var_dump(Yii::app()->request->cookies['siadipqiigam']);
+		var_dump(time()+31104000);
+		//var_dump(Yii::app()->request->cookies['siadipqiigam']->expire);
+		
+		$this->render('index',array(
+			'model'=>$model,
+			));
 	}
 
 	/**
@@ -106,4 +115,72 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionStart()
+	{
+
+		if(!isset(Yii::app()->request->cookies['siadipqiigam']))
+		{
+
+			
+			$user_agent = $_SERVER['HTTP_USER_AGENT'];;
+			$os_platform = "Unknown OS Platform";
+			$os_array = array(
+				'/windows nt 6.2/i'     =>  'Windows 8',
+				'/windows nt 6.1/i'     =>  'Windows 7',
+	            '/windows nt 6.0/i'     =>  'Windows Vista',
+	            '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+	            '/windows nt 5.1/i'     =>  'Windows XP',
+	            '/windows xp/i'         =>  'Windows XP',
+	            '/windows nt 5.0/i'     =>  'Windows 2000',
+	            '/windows me/i'         =>  'Windows ME',
+	            '/win98/i'              =>  'Windows 98',
+	            '/win95/i'              =>  'Windows 95',
+	            '/win16/i'              =>  'Windows 3.11',
+	            '/macintosh|mac os x/i' =>  'Mac OS X',
+	            '/mac_powerpc/i'        =>  'Mac OS 9',
+	            '/linux/i'              =>  'Linux',
+	            '/ubuntu/i'             =>  'Ubuntu',
+	            '/iphone/i'             =>  'iPhone',
+	            '/ipod/i'               =>  'iPod',
+	            '/ipad/i'               =>  'iPad',
+	            '/android/i'            =>  'Android',
+	            '/blackberry/i'         =>  'BlackBerry',
+	            '/webos/i'              =>  'Mobile'
+	            );
+
+		    foreach ($os_array as $regex => $value) 
+		    { 
+
+		        if (preg_match($regex, $user_agent)) 
+		        {
+		            $os_platform    =   $value;
+		        }
+
+		    } 
+		    $cliente = new Cliente;
+		    $sistema = SistemaOperativo::model()->find("nombre=?",array($os_platform));
+		    $cliente->ip= $_SERVER['REMOTE_ADDR'];
+		    $cliente->sistema_operativo_id=$sistema->id;
+
+		    if($cliente->save())
+		    {
+		    	$cookie = new CHttpCookie('siadipqiigam', $cliente->id);
+				$cookie->expire = time()+(60*60*24*180); 
+				Yii::app()->request->cookies['siadipqiigam'] = $cookie;
+		    	$this->redirect(Yii::app()->homeUrl);
+
+		    }
+		    
+		}else
+		{
+			$cookie = Yii::app()->request->cookies['siadipqiigam'];
+			$cookie->expire = time()+(60*60*24*180);
+			Yii::app()->request->cookies['siadipqiigam']= $cookie;
+			$this->redirect(Yii::app()->homeUrl);
+
+		}	
+		
+	}
+	
 }

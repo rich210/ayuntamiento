@@ -23,6 +23,10 @@
 
             <?php echo $form->textAreaControlGroup($model,'descripcion',array('rows'=>6,'span'=>8)); ?>
 
+            <?php echo $form->textFieldControlGroup($model,'fecha_creacion',array('span'=>5)); ?>
+
+            <?php echo $form->textFieldControlGroup($model,'fecha_modificacion',array('span'=>5)); ?>
+
             <?php echo $form->textFieldControlGroup($model,'cancelado',array('span'=>5)); ?>
 
         <div class="form-actions">

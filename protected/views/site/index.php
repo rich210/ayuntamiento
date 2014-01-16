@@ -18,3 +18,22 @@ $this->pageTitle=Yii::app()->name;
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
+
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+	'id'=>'cliente-form',
+	'action'=>$this->createUrl("site/start"),
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+)); ?>
+
+<div class="form-actions">
+    <?php echo TbHtml::submitButton("Continuar",array(
+	    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+	    'size'=>TbHtml::BUTTON_SIZE_LARGE,
+	)); ?>
+</div>
+
+<?php $this->endWidget(); ?>
