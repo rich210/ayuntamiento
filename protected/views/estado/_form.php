@@ -21,13 +21,9 @@
 
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>45)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'cancelado',array('span'=>5)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>  
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_creacion',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'fecha_modificacion',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'pais_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPaises(),array("empty"=>"Seleccione") ); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

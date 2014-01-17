@@ -113,4 +113,6 @@ class Pais extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	 
 }

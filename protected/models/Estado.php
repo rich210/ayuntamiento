@@ -117,4 +117,9 @@ class Estado extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function obtenerPais()
+	{
+	 return CHtml::listData(Pais::model()->findAll("cancelado=?",array(0)),"id","nombre_pais");
+	}
 }

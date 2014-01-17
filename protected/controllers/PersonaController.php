@@ -55,7 +55,11 @@ class PersonaController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
-
+	public function actionEstadosDePaises ()
+	{
+	
+	
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.

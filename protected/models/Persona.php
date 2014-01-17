@@ -204,7 +204,23 @@ class Persona extends CActiveRecord
 		return $opciones;
 	
 	}
+ 
+	
+    public function obtenerMunicipio()
+	{
+	    $opciones=array();
+		$opciones[0]='Seleccionar';
+		$municipios=Municipio::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($municipios as $municipio)
+		{
+			$opciones[$municipio->id]=$municipio->nombre;
+		}
+		return $opciones;
 
+	}
+	
+	 
+ 
 	public function obtenerOcupacion()
 	{
 		$opciones=array();

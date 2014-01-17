@@ -120,4 +120,14 @@ class Municipio extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function obtenerPaises()
+	{
+	 return CHtml::listData(Pais::model()->findAll("cancelado=?",array(0)),"id","nombre_pais");
+	}
+	
+	public function obtenerEstados()
+	{
+	 return CHtml::listData(Estado::model()->findAll("cancelado=?",array(0)),"id","nombre");
+	}
 }

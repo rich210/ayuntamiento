@@ -59,7 +59,7 @@
 
             <?php echo $form->textFieldControlGroup($model,'estado_id',array('span'=>5,'maxlength'=>10)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'municipio_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'municipio_id',$model->obtenerMunicipio()); ?>
 
             <?php echo $form->textFieldControlGroup($model,'poblacion_id',array('span'=>5,'maxlength'=>10)); ?>
 
