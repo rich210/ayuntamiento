@@ -53,7 +53,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'apellido_paterno',
 		'apellido_materno',
 		'fecha_nacimiento',
-		/*
 		'direccion',
 		'telefono',
 		'email',
@@ -70,10 +69,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'pais_id',
 		'estado_id',
 		'municipio_id',
-		'poblacion_id',
 		'unidad_habitacional_id',
 		'usuario_id',
-		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

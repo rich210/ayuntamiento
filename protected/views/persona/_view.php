@@ -33,7 +33,7 @@
 	<?php echo CHtml::encode($data->direccion); ?>
 	<br />
 
-	<?php /*
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('telefono')); ?>:</b>
 	<?php echo CHtml::encode($data->telefono); ?>
 	<br />
@@ -94,10 +94,6 @@
 	<?php echo CHtml::encode($data->municipio_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('poblacion_id')); ?>:</b>
-	<?php echo CHtml::encode($data->poblacion_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('unidad_habitacional_id')); ?>:</b>
 	<?php echo CHtml::encode($data->unidad_habitacional_id); ?>
 	<br />
@@ -106,6 +102,6 @@
 	<?php echo CHtml::encode($data->usuario_id); ?>
 	<br />
 
-	*/ ?>
+	
 
 </div>

@@ -29,8 +29,6 @@
 
                     <?php echo $form->textFieldControlGroup($model,'municipio_id',array('span'=>5,'maxlength'=>10)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'poblacion_id',array('span'=>5,'maxlength'=>10)); ?>
-
         <div class="form-actions">
         <?php echo TbHtml::submitButton('Search',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>

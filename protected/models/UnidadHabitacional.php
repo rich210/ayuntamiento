@@ -13,14 +13,12 @@
  * @property string $pais_id
  * @property string $estado_id
  * @property string $municipio_id
- * @property string $poblacion_id
  *
  * The followings are the available model relations:
  * @property TblPersona[] $tblPersonas
  * @property TblPais $pais
  * @property TblEstado $estado
  * @property TblMunicipio $municipio
- * @property TblPoblacion $poblacion
  */
 class UnidadHabitacional extends CActiveRecord
 {
@@ -40,14 +38,14 @@ class UnidadHabitacional extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, codigo_postal, cancelado, fecha_creacion, fecha_modificacion, pais_id, estado_id, municipio_id, poblacion_id', 'required'),
+			array('nombre, codigo_postal, cancelado, fecha_creacion, fecha_modificacion, pais_id, estado_id, municipio_id', 'required'),
 			array('cancelado', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>50),
 			array('codigo_postal', 'length', 'max'=>8),
-			array('pais_id, estado_id, municipio_id, poblacion_id', 'length', 'max'=>10),
+			array('pais_id, estado_id, municipio_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre, codigo_postal, cancelado, fecha_creacion, fecha_modificacion, pais_id, estado_id, municipio_id, poblacion_id', 'safe', 'on'=>'search'),
+			array('id, nombre, codigo_postal, cancelado, fecha_creacion, fecha_modificacion, pais_id, estado_id, municipio_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +61,6 @@ class UnidadHabitacional extends CActiveRecord
 			'pais' => array(self::BELONGS_TO, 'TblPais', 'pais_id'),
 			'estado' => array(self::BELONGS_TO, 'TblEstado', 'estado_id'),
 			'municipio' => array(self::BELONGS_TO, 'TblMunicipio', 'municipio_id'),
-			'poblacion' => array(self::BELONGS_TO, 'TblPoblacion', 'poblacion_id'),
 		);
 	}
 
@@ -82,7 +79,6 @@ class UnidadHabitacional extends CActiveRecord
 			'pais_id' => 'Pais',
 			'estado_id' => 'Estado',
 			'municipio_id' => 'Municipio',
-			'poblacion_id' => 'Poblacion',
 		);
 	}
 
@@ -113,7 +109,6 @@ class UnidadHabitacional extends CActiveRecord
 		$criteria->compare('pais_id',$this->pais_id,true);
 		$criteria->compare('estado_id',$this->estado_id,true);
 		$criteria->compare('municipio_id',$this->municipio_id,true);
-		$criteria->compare('poblacion_id',$this->poblacion_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

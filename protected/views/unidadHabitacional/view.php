@@ -35,6 +35,5 @@ $this->menu=array(
 		'pais_id',
 		'estado_id',
 		'municipio_id',
-		'poblacion_id',
 	),
 )); ?>

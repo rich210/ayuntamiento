@@ -23,7 +23,7 @@
 
             <?php echo $form->dropDownListControlGroup($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>  
 
-            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPaises(),array("empty"=>"Seleccione") ); ?>
+            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPais(),array("empty"=>"Seleccione") ); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

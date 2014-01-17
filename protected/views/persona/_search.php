@@ -55,8 +55,6 @@
 
                     <?php echo $form->textFieldControlGroup($model,'municipio_id',array('span'=>5,'maxlength'=>10)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'poblacion_id',array('span'=>5,'maxlength'=>10)); ?>
-
                     <?php echo $form->textFieldControlGroup($model,'unidad_habitacional_id',array('span'=>5,'maxlength'=>10)); ?>
 
                     <?php echo $form->textFieldControlGroup($model,'usuario_id',array('span'=>5,'maxlength'=>10)); ?>

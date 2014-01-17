@@ -53,12 +53,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'cancelado',
 		'fecha_creacion',
 		'fecha_modificacion',
-		/*
 		'pais_id',
 		'estado_id',
 		'municipio_id',
-		'poblacion_id',
-		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

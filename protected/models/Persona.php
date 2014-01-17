@@ -26,7 +26,6 @@
  * @property string $pais_id
  * @property string $estado_id
  * @property string $municipio_id
- * @property string $poblacion_id
  * @property string $unidad_habitacional_id
  * @property string $usuario_id
  *
@@ -41,7 +40,6 @@
  * @property TblPais $pais
  * @property TblEstado $estado
  * @property TblMunicipio $municipio
- * @property TblPoblacion $poblacion
  * @property TblUnidadHabitacional $unidadHabitacional
  * @property TblUsuario $usuario
  */
@@ -63,14 +61,14 @@ class Persona extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, poblacion_id, unidad_habitacional_id, usuario_id', 'required'),
+			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'required'),
 			array('genero, bloqueo', 'numerical', 'integerOnly'=>true),
 			array('titulo, email', 'length', 'max'=>45),
 			array('nombre, apellido_paterno, apellido_materno', 'length', 'max'=>50),
-			array('telefono, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, poblacion_id, unidad_habitacional_id, usuario_id', 'length', 'max'=>10),
+			array('telefono, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, titulo, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, poblacion_id, unidad_habitacional_id, usuario_id', 'safe', 'on'=>'search'),
+			array('id, titulo, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -92,7 +90,6 @@ class Persona extends CActiveRecord
 			'pais' => array(self::BELONGS_TO, 'TblPais', 'pais_id'),
 			'estado' => array(self::BELONGS_TO, 'TblEstado', 'estado_id'),
 			'municipio' => array(self::BELONGS_TO, 'TblMunicipio', 'municipio_id'),
-			'poblacion' => array(self::BELONGS_TO, 'TblPoblacion', 'poblacion_id'),
 			'unidadHabitacional' => array(self::BELONGS_TO, 'TblUnidadHabitacional', 'unidad_habitacional_id'),
 			'usuario' => array(self::BELONGS_TO, 'TblUsuario', 'usuario_id'),
 		);
@@ -126,7 +123,6 @@ class Persona extends CActiveRecord
 			'pais_id' => 'Pais',
 			'estado_id' => 'Estado',
 			'municipio_id' => 'Municipio',
-			'poblacion_id' => 'Poblacion',
 			'unidad_habitacional_id' => 'Unidad Habitacional',
 			'usuario_id' => 'Usuario',
 		);
@@ -172,7 +168,6 @@ class Persona extends CActiveRecord
 		$criteria->compare('pais_id',$this->pais_id,true);
 		$criteria->compare('estado_id',$this->estado_id,true);
 		$criteria->compare('municipio_id',$this->municipio_id,true);
-		$criteria->compare('poblacion_id',$this->poblacion_id,true);
 		$criteria->compare('unidad_habitacional_id',$this->unidad_habitacional_id,true);
 		$criteria->compare('usuario_id',$this->usuario_id,true);
 

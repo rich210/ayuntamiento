@@ -73,6 +73,7 @@ class MunicipioController extends Controller
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Municipio'])) {
+
 			$model->attributes=$_POST['Municipio'];
 			$model->fecha_creacion= Date("Y-m-d H:i:s");
 			$model->fecha_modificacion= Date("Y-m-d H:i:s");
@@ -188,9 +189,34 @@ class MunicipioController extends Controller
 	
 	 public function actionEstadosDePaises()
 	{
-	  $list=Estado::model()->findAll("pais_id=?",array($_POST["Municipio"]["pais_id"]));
-      foreach($list as $data)
-      echo"<option value=\"{$data->id}\">{$data->name}<\option>";	  
+		if(isset($_POST["Municipio"]["pais_id"]))
+		{
+			$list=CHtml::listData(Estado::model()->findAll("pais_id=:pais_id AND cancelado=:cancelado",array(":pais_id"=>$_POST["Municipio"]["pais_id"],":cancelado"=>0),"id","nombre"));
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+	  	  
 	
 	}
 }

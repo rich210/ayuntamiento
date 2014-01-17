@@ -13,7 +13,12 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
-)); ?>
+	'enableClientValidation'=>true,
+	'clientOptions'=>array(
+		'validateOnSubmit' => true,
+		'validateOnChange' => true,
+		),
+	)); ?>
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
@@ -22,18 +27,35 @@
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>50)); ?>
 
             <?php echo $form->dropDownListControlGroup ($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>
-            <?php 
-			  $htmlOptions=array(
-			  "ajax"=>array(
-			     "url"=>$this->createUrl("estadosDePaises"),
-				 "type"=>"POST",
-				 "update"=>"#Municipio_estado_id",
-			  ),
-			);
+            
+            <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'pais_id',
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Pais::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre_pais'
+					)
+				),
+				array( "empty" => 'Seleccione' ),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('estadosDePaises'),
+						'update' => '#estado_id',
+					)
+				)
+			); 
 			?>
-            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPaises(),array("empty"=>"Seleccione"),$htmlOptions); ?>
              
-            <?php echo $form->dropDownListControlGroup($model,'estado_id',$model->ObtenerEstados( isset ($_POST["Municipio"]["pais_id"])? $_POST["Municipio"]["pais_id"]:1),array("empty"=>"Seleccione")); ?>
+            <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'estado_id',
+            	CHtml::encodeArray(
+					array( 0 => '--- Seleccionar ---' )
+				)
+			); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

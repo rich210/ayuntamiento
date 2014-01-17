@@ -33,7 +33,6 @@
 	<?php echo CHtml::encode($data->pais_id); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('estado_id')); ?>:</b>
 	<?php echo CHtml::encode($data->estado_id); ?>
 	<br />
@@ -41,11 +40,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('municipio_id')); ?>:</b>
 	<?php echo CHtml::encode($data->municipio_id); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('poblacion_id')); ?>:</b>
-	<?php echo CHtml::encode($data->poblacion_id); ?>
-	<br />
-
-	*/ ?>
 
 </div>
