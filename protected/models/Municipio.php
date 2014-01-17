@@ -126,8 +126,8 @@ class Municipio extends CActiveRecord
 	 return CHtml::listData(Pais::model()->findAll("cancelado=?",array(0)),"id","nombre_pais");
 	}
 	
-	public function obtenerEstados()
+	public function obtenerEstados($defaultPais)
 	{
-	 return CHtml::listData(Estado::model()->findAll("cancelado=?",array(0)),"id","nombre");
+	 return CHtml::listData(Estado::model()->findAll("cancelado=? AND  pais_id=?",array(0,$defaultPais)),"id","nombre");
 	}
 }

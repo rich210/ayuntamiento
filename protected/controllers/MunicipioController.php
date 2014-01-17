@@ -32,7 +32,7 @@ class MunicipioController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','estadosDePaises'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -60,6 +60,11 @@ class MunicipioController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+	 
+	 
+	 
+	 
+	 
 	public function actionCreate()
 	{
 		$model=new Municipio;
@@ -179,5 +184,13 @@ class MunicipioController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	 public function actionEstadosDePaises()
+	{
+	  $list=Estado::model()->findAll("pais_id=?",array($_POST["Municipio"]["pais_id"]));
+      foreach($list as $data)
+      echo"<option value=\"{$data->id}\">{$data->name}<\option>";	  
+	
 	}
 }

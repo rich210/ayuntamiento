@@ -22,10 +22,18 @@
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>50)); ?>
 
             <?php echo $form->dropDownListControlGroup ($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>
-
-            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPaises(),array("empty"=>"Seleccione")); ?>
-
-            <?php echo $form->dropDownListControlGroup($model,'estado_id',$model->ObtenerEstados(),array("empty"=>"Seleccione")); ?>
+            <?php 
+			  $htmlOptions=array(
+			  "ajax"=>array(
+			     "url"=>$this->createUrl("estadosDePaises"),
+				 "type"=>"POST",
+				 "update"=>"#Municipio_estado_id",
+			  ),
+			);
+			?>
+            <?php echo $form->dropDownListControlGroup($model,'pais_id',$model->ObtenerPaises(),array("empty"=>"Seleccione"),$htmlOptions); ?>
+             
+            <?php echo $form->dropDownListControlGroup($model,'estado_id',$model->ObtenerEstados( isset ($_POST["Municipio"]["pais_id"])? $_POST["Municipio"]["pais_id"]:1),array("empty"=>"Seleccione")); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(
