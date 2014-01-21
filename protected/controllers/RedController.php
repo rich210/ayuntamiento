@@ -69,6 +69,8 @@ class RedController extends Controller
 
 		if (isset($_POST['Red'])) {
 			$model->attributes=$_POST['Red'];
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -93,6 +95,7 @@ class RedController extends Controller
 
 		if (isset($_POST['Red'])) {
 			$model->attributes=$_POST['Red'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

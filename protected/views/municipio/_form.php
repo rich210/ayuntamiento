@@ -31,6 +31,7 @@
             <?php echo $form->dropDownListControlGroup(
             	$model,
             	'pais_id',
+				array("empty" => 'Seleccione') +
             	CHtml::encodeArray(
 					CHtml::listData(
 						Pais::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
@@ -38,12 +39,12 @@
 						'nombre_pais'
 					)
 				),
-				array( "empty" => 'Seleccione' ),
+				//array( "empty" => 'Seleccione' ),
 				array(
 					'ajax' => array(
 						'type' => 'POST',
 						'url' => $this->createUrl('estadosDePaises'),
-						'update' => '#estado_id',
+						'update' => '#Municipio_estado_id',
 					)
 				)
 			); 

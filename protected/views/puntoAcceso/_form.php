@@ -19,7 +19,7 @@
 
     <?php echo $form->errorSummary($model); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'status',array('span'=>5)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'status',array("Encendido","Apagado","Mal Funcionamiento"),array("empty"=>"Seleccione")); ?>
 
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>45)); ?>
 
@@ -37,7 +37,18 @@
 
             <?php echo $form->textFieldControlGroup($model,'lanIp',array('span'=>5,'maxlength'=>20)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'red_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup(
+                $model,
+                'red_id',
+                CHtml::encodeArray(
+                    CHtml::listData(
+                        Red::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+                        'id',
+                        'nombre'
+                    )
+                ),
+                array( "empty" => 'Seleccione' )
+            ); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

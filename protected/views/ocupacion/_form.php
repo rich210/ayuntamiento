@@ -23,7 +23,7 @@
 
             <?php echo $form->textAreaControlGroup($model,'descripcion',array('rows'=>6,'span'=>8)); ?>
 
-            <?php echo $form->dropDownListControlGroup($model,'cancelado',array('False','True'),array('empty'=>'Selecciona')); ?>
+            <?php echo $form->dropDownListControlGroup ($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>
 
             
 

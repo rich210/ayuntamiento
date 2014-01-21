@@ -191,7 +191,16 @@ class MunicipioController extends Controller
 	{
 		if(isset($_POST["Municipio"]["pais_id"]))
 		{
-			$list=CHtml::listData(Estado::model()->findAll("pais_id=:pais_id AND cancelado=:cancelado",array(":pais_id"=>$_POST["Municipio"]["pais_id"],":cancelado"=>0),"id","nombre"));
+			$list = CHtml::listData(
+				Estado::model()->findAll(
+					"pais_id=:pais_id AND cancelado=:cancelado",
+					array(
+						":pais_id"=>$_POST["Municipio"]["pais_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+			);
 		  	echo CHtml::tag(
 					'option',
 					array('value'=>'empty'),
