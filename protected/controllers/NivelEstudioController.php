@@ -69,6 +69,8 @@ class NivelEstudioController extends Controller
 
 		if (isset($_POST['NivelEstudio'])) {
 			$model->attributes=$_POST['NivelEstudio'];
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -93,6 +95,7 @@ class NivelEstudioController extends Controller
 
 		if (isset($_POST['NivelEstudio'])) {
 			$model->attributes=$_POST['NivelEstudio'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -177,4 +180,10 @@ class NivelEstudioController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	
+	
+	
+	
+	
 }

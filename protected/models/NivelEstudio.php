@@ -109,4 +109,6 @@ class NivelEstudio extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	 
 }

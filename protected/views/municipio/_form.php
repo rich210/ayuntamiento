@@ -39,7 +39,6 @@
 						'nombre_pais'
 					)
 				),
-				//array( "empty" => 'Seleccione' ),
 				array(
 					'ajax' => array(
 						'type' => 'POST',

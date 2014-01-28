@@ -62,7 +62,7 @@ class Nacionalidad extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre_nacionalidad' => 'Nombre Nacionalidad',
-			'descripcion' => 'Descripcion',
+			'descripcion' => 'Descripción',
 			'cancelado' => 'Cancelado',
 			'fecha_creacion' => 'Fecha Creacion',
 			'fecha_modificacion' => 'Fecha Modificacion',

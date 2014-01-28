@@ -62,7 +62,7 @@ class UsabilidadServicio extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nombre_uso_servicio' => 'Nombre Uso Servicio',
-			'descripcion' => 'Descripcion',
+			'descripcion' => 'Descripción',
 			'cancelado' => 'Cancelado',
 			'fecha_creacion' => 'Fecha Creacion',
 			'fecha_modificacion' => 'Fecha Modificacion',

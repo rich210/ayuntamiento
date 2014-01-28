@@ -32,7 +32,7 @@ class UnidadHabitacionalController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','estadosDePaises','municipiosDeEstados'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -69,6 +69,8 @@ class UnidadHabitacionalController extends Controller
 
 		if (isset($_POST['UnidadHabitacional'])) {
 			$model->attributes=$_POST['UnidadHabitacional'];
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -93,6 +95,7 @@ class UnidadHabitacionalController extends Controller
 
 		if (isset($_POST['UnidadHabitacional'])) {
 			$model->attributes=$_POST['UnidadHabitacional'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -177,4 +180,101 @@ class UnidadHabitacionalController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	public function actionEstadosDePaises ()
+	{
+		if(isset($_POST["UnidadHabitacional"]["pais_id"]))
+		{
+			$list = CHtml::listData(
+				Estado::model()->findAll(
+					"pais_id=:pais_id AND cancelado=:cancelado",
+					array(
+						":pais_id"=>$_POST["UnidadHabitacional"]["pais_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+				
+			);
+			
+					
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+	
+	
+	}
+	
+	
+	public function actionMunicipiosDeEstados ()
+	{
+		if(isset($_POST["UnidadHabitacional"]["estado_id"]))
+		{
+			$list = CHtml::listData(
+				Municipio::model()->findAll(
+					"estado_id=:estado_id AND cancelado=:cancelado",
+					array(
+						":estado_id"=>$_POST["UnidadHabitacional"]["estado_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+				
+			);
+			
+					
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+	  	
+	
+
+
+
+		
+	
+	}
+	
 }

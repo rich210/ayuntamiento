@@ -17,7 +17,7 @@
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-    <?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary(array($model, $usuario)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'titulo',array('span'=>5,'maxlength'=>45)); ?>
 
@@ -27,43 +27,130 @@
 
             <?php echo $form->textFieldControlGroup($model,'apellido_materno',array('span'=>5,'maxlength'=>50)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_nacimiento',array('span'=>5)); ?>
-
+            <?php echo $form->labelEx($model,'fecha_nacimiento'); ?>
+			<?php 
+			$this->widget("zii.widgets.jui.CJuiDatePicker",array(
+					"attribute"=>"fecha_nacimiento",
+					"model"=>$model,
+					"language"=>"es",
+					"options"=>array(
+						"dateFormat"=>"yy-mm-dd",
+						'showButtonPanel'=> true,
+						'changeYear'=>true,
+						'changeYear'=>true,
+						'dateFormat'=>'yy-mm-dd',
+						'yearRange'=>'-80:-10',
+						'minDate'=>'-80Y',
+						'maxDate'=>'-10Y',
+						 
+						)
+				));
+			?>
+			
+			<?php echo $form->error($model,'fecha_nacimiento');?>
+			
             <?php echo $form->textAreaControlGroup($model,'direccion',array('rows'=>6,'span'=>8)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'telefono',array('span'=>5,'maxlength'=>10)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'email',array('span'=>5,'maxlength'=>45)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'genero',array('span'=>5)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'genero',array(0=>"Masculino", 1=>"Femenino"),array("empty"=>"Seleccione")); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'bloqueo',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'fecha_creacion',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'fecha_modificacion',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'nivel_estudios_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'nivel_estudios_id', $model->obtenerNivelDeEstudio()); ?>
 
             <?php echo $form->dropDownListControlGroup($model,'ocupacion_id',$model->obtenerOcupacion()); ?>
 
             <?php echo $form->dropDownListControlGroup($model,'estado_civil_id',$model->obtenerEstadoCivil()); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'nacionalidad_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'nacionalidad_id',$model->obtenerNacionalidades()); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'equipo_conexion_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'equipo_conexion_id',$model->obtenerEquipoDeConexion()); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'usabilidad_servicio_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'usabilidad_servicio_id',$model->obtenerUsabilidadDelServicio()); ?>
+			
+			<?php 
+				echo $form->checkBoxListControlGroup(
+					$model, 
+					'intereses', 
+					CHTml::listData(Interes::model()->findAll ("cancelado=:cancelado",array(":cancelado"=>0)),'id','nombre_interes'));
+				
+				
+			?>
 
-            <?php echo $form->textFieldControlGroup($model,'pais_id',array('span'=>5,'maxlength'=>10)); ?>
+             <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'pais_id',
+				array("empty" => 'Seleccione') +
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Pais::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre_pais'
+					)
+				),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('estadosDePaises'),
+						'update' => '#Persona_estado_id',
+					)
+				)
+			); 
+			?>
+             
+            <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'estado_id',array("empty" => 'Seleccione') +
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Estado::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre'
+					)
+				),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('municipiosDeEstados'),
+						'update' => '#Persona_municipio_id',
+					)
+				)
+			); 
+			?>
 
-            <?php echo $form->textFieldControlGroup($model,'estado_id',array('span'=>5,'maxlength'=>10)); ?>
+           
 
-            <?php echo $form->dropDownListControlGroup($model,'municipio_id',$model->obtenerMunicipio()); ?>
+            <?php echo $form->dropDownListControlGroup(
+				$model,
+				'municipio_id',array("empty" => 'Seleccione') +
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Municipio::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre'
+					)
+				),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('uniHabitacionalDeMunicipios'),
+						'update' => '#Persona_unidad_habitacional_id',
+					)
+				)
+			); 
+			?>
 
-            <?php echo $form->textFieldControlGroup($model,'unidad_habitacional_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup($model,
+			'unidad_habitacional_id',
+			CHtml::encodeArray(
+					array( 0 => '--- Seleccionar ---' )
+				)
+			); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'usuario_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->textFieldControlGroup($usuario,'usuario',array('span'=>5,'maxlength'=>50)); ?>
+
+            <?php echo $form->passwordFieldControlGroup($usuario,'contrasena',array('span'=>5,'maxlength'=>80)); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

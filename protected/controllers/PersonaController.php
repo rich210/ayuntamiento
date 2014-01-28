@@ -32,7 +32,7 @@ class PersonaController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','estadosDePaises','municipiosDeEstados','uniHabitacionalDeMunicipios' ),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -55,11 +55,7 @@ class PersonaController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
-	public function actionEstadosDePaises ()
-	{
-	
-	
-	}
+	 
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -67,19 +63,52 @@ class PersonaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Persona;
+		$usuario = new Usuario;
+		
+		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['Persona'])) {
+		if (isset($_POST['Persona'], $_POST['Usuario'])) 
+		{
 			$model->attributes=$_POST['Persona'];
-			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->id));
+			$usuario->attributes=$_POST['Usuario'];
+			$model->bloqueo = 0;
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
+			$usuario->fecha_creacion= Date("Y-m-d H:i:s");
+			$usuario->fecha_modificacion= Date("Y-m-d H:i:s");
+			$usuario->cancelado= 0;
+			$usuario->validate();
+			
+			if($usuario->save())
+			{
+				$model->usuario_id = $usuario->id;
+				$model->validate();
+				if($model->save())
+				{
+					foreach($model->intereses as $llave => $interes)
+					{
+						$int= new InteresPersona;
+						$int->persona_id= $model->id;
+						$int->interes_id= (int)$interes;
+						$int->fecha_creacion= Date("Y-m-d H:i:s");
+						$int->fecha_modificacion= Date("Y-m-d H:i:s");
+						if($int->validate())
+							$int->save();
+						
+					}
+					$this->redirect(array('view','id'=>$model->id));
+				}
+				
 			}
+			
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'usuario'=>$usuario,
 		));
 	}
 
@@ -97,6 +126,7 @@ class PersonaController extends Controller
 
 		if (isset($_POST['Persona'])) {
 			$model->attributes=$_POST['Persona'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -181,4 +211,144 @@ class PersonaController extends Controller
 			Yii::app()->end();
 		}
 	}
+	 
+	
+	public function actionEstadosDePaises ()
+	{
+		if(isset($_POST["Persona"]["pais_id"]))
+		{
+			$list = CHtml::listData(
+				Estado::model()->findAll(
+					"pais_id=:pais_id AND cancelado=:cancelado",
+					array(
+						":pais_id"=>$_POST["Persona"]["pais_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+				
+			);
+			
+					
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+	
+	
+	}
+	
+	
+	public function actionMunicipiosDeEstados ()
+	{
+		if(isset($_POST["Persona"]["estado_id"]))
+		{
+			$list = CHtml::listData(
+				Municipio::model()->findAll(
+					"estado_id=:estado_id AND cancelado=:cancelado",
+					array(
+						":estado_id"=>$_POST["Persona"]["estado_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+				
+			);
+			
+					
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+
+	
+	}
+	
+	
+	public function actionUniHabitacionalDeMunicipios  ()
+	{
+		if(isset($_POST["Persona"]["municipio_id"]))
+		{
+			$list = CHtml::listData(
+				 UnidadHabitacional::model()->findAll(
+					"municipio_id=:municipio_id AND cancelado=:cancelado",
+					array(
+						":municipio_id"=>$_POST["Persona"]["municipio_id"],
+						":cancelado"=>0
+					)
+				),
+				"id","nombre"
+				
+			);
+			
+					
+		  	echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('Seleccionar'),
+					true
+				);
+	      	foreach($list as $id=>$nombre)
+	      	{
+	      		echo CHtml::tag(
+						'option',
+						array('value'=>$id),
+						CHtml::encode($nombre),
+						true
+					);
+
+	      	}
+		}else{
+			echo CHtml::tag(
+					'option',
+					array('value'=>'empty'),
+					CHtml::encode('No entro'),
+					true
+				);
+		}
+
+	
+	}
+	
+	
 }

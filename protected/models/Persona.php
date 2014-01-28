@@ -48,6 +48,8 @@ class Persona extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $intereses;
+	 
 	public function tableName()
 	{
 		return 'tbl_persona';
@@ -61,7 +63,7 @@ class Persona extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'required'),
+			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id, intereses', 'required'),
 			array('genero, bloqueo', 'numerical', 'integerOnly'=>true),
 			array('titulo, email', 'length', 'max'=>45),
 			array('nombre, apellido_paterno, apellido_materno', 'length', 'max'=>50),
@@ -106,25 +108,26 @@ class Persona extends CActiveRecord
 			'nombre' => 'Nombre',
 			'apellido_paterno' => 'Apellido Paterno',
 			'apellido_materno' => 'Apellido Materno',
-			'fecha_nacimiento' => 'Fecha Nacimiento',
-			'direccion' => 'Direccion',
-			'telefono' => 'Telefono',
+			'fecha_nacimiento' => 'Fecha de Nacimiento',
+			'direccion' => 'Dirección',
+			'telefono' => 'Teléfono',
 			'email' => 'Email',
-			'genero' => 'Genero',
+			'genero' => 'Género',
 			'bloqueo' => 'Bloqueo',
 			'fecha_creacion' => 'Fecha Creacion',
 			'fecha_modificacion' => 'Fecha Modificacion',
-			'nivel_estudios_id' => 'Nivel Estudios',
-			'ocupacion_id' => 'Ocupacion',
+			'nivel_estudios_id' => 'Nivel de Estudios',
+			'ocupacion_id' => 'Ocupación',
 			'estado_civil_id' => 'Estado Civil',
 			'nacionalidad_id' => 'Nacionalidad',
-			'equipo_conexion_id' => 'Equipo Conexion',
-			'usabilidad_servicio_id' => 'Usabilidad Servicio',
-			'pais_id' => 'Pais',
+			'equipo_conexion_id' => 'Equipo de Conexión',
+			'usabilidad_servicio_id' => 'Usabilidad del Servicio',
+			'pais_id' => 'País',
 			'estado_id' => 'Estado',
 			'municipio_id' => 'Municipio',
 			'unidad_habitacional_id' => 'Unidad Habitacional',
 			'usuario_id' => 'Usuario',
+			'intereses'=>'Intereses',
 		);
 	}
 
@@ -190,7 +193,7 @@ class Persona extends CActiveRecord
 	public function obtenerEstadoCivil()
 	{
 		$opciones=array();
-		$opciones[0]='Seleccionar';
+		$opciones[0]='Seleccione';
 		$estadoCiviles=EstadoCivil::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
 		foreach($estadoCiviles as $estadoCivil)
 		{
@@ -199,27 +202,44 @@ class Persona extends CActiveRecord
 		return $opciones;
 	
 	}
- 
 	
-    public function obtenerMunicipio()
+	
+	public function obtenerNacionalidades()
 	{
-	    $opciones=array();
-		$opciones[0]='Seleccionar';
-		$municipios=Municipio::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
-		foreach($municipios as $municipio)
+		$opciones=array();
+		$opciones[0]='Seleccione';
+		$nacionalidades=Nacionalidad::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($nacionalidades as $nacionalidad)
 		{
-			$opciones[$municipio->id]=$municipio->nombre;
+			$opciones[$nacionalidad->id]=$nacionalidad->nombre_nacionalidad;
 		}
 		return $opciones;
-
+	
 	}
+	
+	
+	public function obtenerNivelDeEstudio()
+	{
+		$opciones=array();
+		$opciones[0]='Seleccione';
+		$niveles=NivelEstudio::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($niveles as $nivelEstudio)
+		{
+			$opciones[$nivelEstudio->id]=$nivelEstudio->nombre_nivel_estudio;
+		}
+		return $opciones;
+	
+	}
+ 
+	
+	
 	
 	 
  
 	public function obtenerOcupacion()
 	{
 		$opciones=array();
-		$opciones[0]='Seleccionar';
+		$opciones[0]='Seleccione';
 		$ocupaciones=Ocupacion::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
 		foreach($ocupaciones as $ocupacion)
 		{
@@ -227,5 +247,51 @@ class Persona extends CActiveRecord
 		}
 		return $opciones;
 	
+	}
+	
+	public function obtenerEquipoDeConexion()
+	{
+		$opciones=array();
+		$opciones[0]='Seleccione';
+		$equipos=EquipoConexion::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($equipos as $equipoConexion)
+		{
+			$opciones[$equipoConexion->id]=$equipoConexion->nombre_equipo_conexion;
+		}
+		return $opciones;
+	
+	}
+	
+	public function obtenerUsabilidadDelServicio()
+	{
+		$opciones=array();
+		$opciones[0]='Seleccione';
+		$servicios=UsabilidadServicio::model()->findAll('cancelado=:cancelado', array(':cancelado'=>0));
+		foreach($servicios as $usabilidadServicio)
+		{
+			$opciones[$usabilidadServicio->id]=$usabilidadServicio->nombre_uso_servicio;
+		}
+		return $opciones;
+	
+	}
+	
+	
+	public function obtenerPaises()
+	{
+	 return CHtml::listData(Pais::model()->findAll("cancelado=?",array(0)),"id","nombre_pais");
+	}
+	
+	public function obtenerEstados($defaultPais)
+	{
+	 return CHtml::listData(Estado::model()->findAll("cancelado=? AND  pais_id=?",array(0,$defaultPais)),"id","nombre");
+	}
+	public function obtenerMunicipios($defaultEstado)
+	{
+	 return CHtml::listData(Municipio::model()->findAll("cancelado=? AND  estado_id=?",array(0,$defaultEstado)),"id","nombre");
+	}
+	
+	public function obtenerUnidadHabitacional($defaultMunicipio)
+	{
+	 return CHtml::listData(UnidadHabitacional::model()->findAll("cancelado=? AND  municipio_id=?",array(0,$defaultMunicipio)),"id","nombre");
 	}
 }

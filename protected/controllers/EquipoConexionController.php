@@ -69,6 +69,8 @@ class EquipoConexionController extends Controller
 
 		if (isset($_POST['EquipoConexion'])) {
 			$model->attributes=$_POST['EquipoConexion'];
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -93,6 +95,7 @@ class EquipoConexionController extends Controller
 
 		if (isset($_POST['EquipoConexion'])) {
 			$model->attributes=$_POST['EquipoConexion'];
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

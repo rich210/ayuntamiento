@@ -23,17 +23,58 @@
 
             <?php echo $form->textFieldControlGroup($model,'codigo_postal',array('span'=>5,'maxlength'=>8)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'cancelado',array('span'=>5)); ?>
+            <?php echo $form->dropDownListControlGroup ($model,'cancelado',array(0=>"No", 1=>"Si"),array("empty"=>"Seleccione")); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_creacion',array('span'=>5)); ?>
+             
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_modificacion',array('span'=>5)); ?>
+             <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'pais_id',
+				array("empty" => 'Seleccione') +
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Pais::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre_pais'
+					)
+				),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('estadosDePaises'),
+						'update' => '#UnidadHabitacional_estado_id',
+					)
+				)
+			); 
+			?>
+             
+            <?php echo $form->dropDownListControlGroup(
+            	$model,
+            	'estado_id',array("empty" => 'Seleccione') +
+            	CHtml::encodeArray(
+					CHtml::listData(
+						Estado::model()->findAll("cancelado=:cancelado",array(":cancelado"=>0)),
+						'id',
+						'nombre'
+					)
+				),
+				array(
+					'ajax' => array(
+						'type' => 'POST',
+						'url' => $this->createUrl('municipiosDeEstados'),
+						'update' => '#UnidadHabitacional_municipio_id',
+					)
+				)
+			); 
+			?>
 
-            <?php echo $form->textFieldControlGroup($model,'pais_id',array('span'=>5,'maxlength'=>10)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'estado_id',array('span'=>5,'maxlength'=>10)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'municipio_id',array('span'=>5,'maxlength'=>10)); ?>
+            <?php echo $form->dropDownListControlGroup(
+				$model,
+				'municipio_id',
+				CHtml::encodeArray(
+					array( 0 => '--- Seleccionar ---' )
+				)
+			); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

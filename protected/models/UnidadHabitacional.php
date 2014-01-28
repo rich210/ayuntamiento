@@ -125,4 +125,18 @@ class UnidadHabitacional extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function obtenerPaises()
+	{
+	 return CHtml::listData(Pais::model()->findAll("cancelado=?",array(0)),"id","nombre_pais");
+	}
+	
+	public function obtenerEstados($defaultPais)
+	{
+	 return CHtml::listData(Estado::model()->findAll("cancelado=? AND  pais_id=?",array(0,$defaultPais)),"id","nombre");
+	}
+	public function obtenerMunicipios($defaultEstado)
+	{
+	 return CHtml::listData(Municipio::model()->findAll("cancelado=? AND  estado_id=?",array(0,$defaultEstado)),"id","nombre");
+	}
 }

@@ -63,7 +63,7 @@ class Interes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_interes' => 'Nombre Interes',
+			'nombre_interes' => 'Nombre del Interes',
 			'descripcion' => 'Descripcion',
 			'cancelado' => 'Cancelado',
 			'fecha_creacion' => 'Fecha Creacion',

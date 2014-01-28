@@ -61,8 +61,8 @@ class EquipoConexion extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_equipo_conexion' => 'Nombre Equipo Conexion',
-			'descripcion' => 'Descripcion',
+			'nombre_equipo_conexion' => 'Nombre del Equipo de Conexion',
+			'descripcion' => 'Descripción',
 			'cancelado' => 'Cancelado',
 			'fecha_creacion' => 'Fecha Creacion',
 			'fecha_modificacion' => 'Fecha Modificacion',
