@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+    'enableClientValidation'=>true,
 )); ?>
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
@@ -25,13 +26,22 @@
 
             <?php echo $form->textAreaControlGroup($model,'html',array('rows'=>6,'span'=>8)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_creacion',array('span'=>5)); ?>
+            <?php echo $form->labelEx($model,'caducidad'); 
+                $this->widget('zii.widgets.jui.CJuiDatePicker',array(
+                    "name"=>"Caducidad",
+                    "attribute"=>"caducidad",
+                    "model"=>$model,
+                    "language"=>"es",
+                    "options"=>array(
+                        "dateFormat"=>"yy-mm-dd",
+                        "changeMonth"=>true,
+                        "minDate"=>"1d",
+                    ),
+                ));
+            ?>
+            <?php echo $form->error($model,'caducidad'); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'fecha_modificacion',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'caducidad',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'predeterminado',array('span'=>5)); ?>
+            <?php echo $form->dropDownListControlGroup($model,'predeterminado',array('empty'=>'Seleccione', 1 => 'Si', 0 => 'No')); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

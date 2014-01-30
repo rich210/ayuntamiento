@@ -53,9 +53,9 @@ class Cliente extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'usuario' => array(self::BELONGS_TO, 'TblUsuario', 'usuario_id'),
-			'sistemaOperativo' => array(self::BELONGS_TO, 'TblSistemaOperativo', 'sistema_operativo_id'),
-			'tblEventLogs' => array(self::HAS_MANY, 'TblEventLog', 'cliente_id'),
+			'usuario' => array(self::BELONGS_TO, 'Usuario', 'usuario_id'),
+			'sistemaOperativo' => array(self::BELONGS_TO, 'SistemaOperativo', 'sistema_operativo_id'),
+			'tblEventLogs' => array(self::HAS_MANY, 'EventLog', 'cliente_id'),
 		);
 	}
 

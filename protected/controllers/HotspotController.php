@@ -66,9 +66,48 @@ class HotspotController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		
+		$model->html='<?php Yii::app()->bootstrap->register(); /* @var $this Controller */ ?>
+			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="es">
+			<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta name="language" content="en" />
 
+				<!-- blueprint CSS framework -->
+				<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
+				<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+				<!--[if lt IE 8]>
+				<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
+				<![endif]-->
+
+				<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+				<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+				<!-- Agregar CSS para nuevas paginas -->
+
+				<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+			</head>
+
+			<body>
+
+			<div class="container" id="page">
+
+				<div id="header">
+				</div><!-- Cabecera -->
+				
+				<?php echo $content; ?>//No Eliminar, el contenido de toda la pagina
+				
+				<div class="clear"></div>
+
+				<div id="footer">
+				</div><!-- Pie de Pagina -->
+			</div><!-- Pagina -->
+			</body>
+			</html>';
 		if (isset($_POST['Hotspot'])) {
 			$model->attributes=$_POST['Hotspot'];
+			$model->fecha_creacion= Date("Y-m-d H:i:s");
+			$model->fecha_modificacion= Date("Y-m-d H:i:s");
 			if ($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
 			}

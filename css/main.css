@@ -6,13 +6,17 @@ body
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
 }
+.container
+{
+	width: auto;
+}
 
 #page
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #97bf0d;
 }
 
 #header
@@ -34,11 +38,10 @@ body
 
 #footer
 {
-	padding: 10px;
-	margin: 10px 20px;
+	padding: 2% 1% 1%;
+	
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
 }
 
 #logo
@@ -132,7 +135,7 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #97bf0d;
 }
 
 div.breadcrumbs
@@ -161,7 +164,7 @@ div.search-form
 .portlet-decoration
 {
 	padding: 3px 8px;
-	background: #B7D6E7;
+	background: #179ecf;
 	border-left: 5px solid #6FACCF;
 }
 
@@ -171,7 +174,7 @@ div.search-form
 	font-weight: bold;
 	padding: 0;
 	margin: 0;
-	color: #298dcd;
+	color: white;
 }
 
 .portlet-content
@@ -179,7 +182,8 @@ div.search-form
 	font-size:0.9em;
 	margin: 0 0 15px 0;
 	padding: 5px 8px;
-	background:#EFFDFF;
+	
+	background:#e9e9da;
 }
 
 .portlet-content ul
@@ -194,6 +198,7 @@ div.search-form
 .portlet-content li
 {
 	padding: 2px 0 4px 0px;
+
 }
 
 .operations

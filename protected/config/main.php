@@ -7,10 +7,12 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Sistema integral para la administración de información en parques públicos con internet inalámbrico gratuito del Ayuntamiento de Mérida',
 	'language'=>'es',
-	'sourceLanguage'=>'en',
+	'sourceLanguage'=>'es',
 	'charset'=>'utf-8',
+	'timeZone'=>'America/Mexico_City',
+	'layout' => 'column2',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -98,6 +100,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'richespsan.210@gmail.com',
 	),
 );

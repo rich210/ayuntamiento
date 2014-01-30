@@ -5,6 +5,7 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
+	public $layout = 'main';
 	public function actions()
 	{
 		return array(
@@ -29,16 +30,24 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-
+		//$layout = Hotspot::model()->find("predeterminado=:predeterminado", array(":predeterminado"=>1));
+		//var_dump($layout->html);
+		$this->layout = 'mainBootstrap';
 		$model= new Cliente;
-		//Yii::app()->request->cookies->clear();
-		var_dump(Yii::app()->request->cookies['siadipqiigam']);
-		var_dump(time()+31104000);
-		//var_dump(Yii::app()->request->cookies['siadipqiigam']->expire);
+		$login= new loginForm;
+		if(isset($_GET["puntoAcceso"]))
+		{
+			$this->render('index',array(
+				'model'=>$model,
+				'puntoAcceso'=>$_GET["puntoAcceso"],
+				));	
+		}else{
+			$this->render('index',array(
+				'model'=>$model,
+				'login'=>$login,
+				));	
+		}
 		
-		$this->render('index',array(
-			'model'=>$model,
-			));
 	}
 
 	/**
@@ -160,25 +169,49 @@ class SiteController extends Controller
 		    } 
 		    $cliente = new Cliente;
 		    $sistema = SistemaOperativo::model()->find("nombre=?",array($os_platform));
-		    $cliente->ip= $_SERVER['REMOTE_ADDR'];
-		    $cliente->sistema_operativo_id=$sistema->id;
+		    $cliente->ip = $_SERVER['REMOTE_ADDR'];
+		    $cliente->sistema_operativo_id = $sistema->id;
 
 		    if($cliente->save())
 		    {
-		    	$cookie = new CHttpCookie('siadipqiigam', $cliente->id);
-				$cookie->expire = time()+(60*60*24*180); 
-				Yii::app()->request->cookies['siadipqiigam'] = $cookie;
-		    	$this->redirect(Yii::app()->homeUrl);
-
+		    	$puntoAcceso = $_GET["puntoAcceso"];
+		    	$event = new EventLog;
+			    $event->fecha = Date("Y-m-d H:i:s");
+			    $event->punto_acceso_id = PuntoAcceso::model()->find("nombre=:nombre", array(":nombre"=>$puntoAcceso))->id;
+			    $event->cliente_id = $cliente->id;
+			    $event->tipo_evento_id = TipoEvento::model()->findByPk(1)->id;
+			    $event->detalles = "inicio de sesion";
+			    $event->validate();
+			    if($event->save())
+			    {
+			    	$cookie = new CHttpCookie('siadipqiigam', $cliente->id);
+					$cookie->expire = time()+(60*60*24*180); 
+					Yii::app()->request->cookies['siadipqiigam'] = $cookie;
+			    	$this->redirect('http://www.merida.gob.mx/municipio/sitiosphp/parques/php/inicio.php');	
+			    }
+		    	
 		    }
 		    
 		}else
 		{
-			$cookie = Yii::app()->request->cookies['siadipqiigam'];
-			$cookie->expire = time()+(60*60*24*180);
-			Yii::app()->request->cookies['siadipqiigam']= $cookie;
-			$this->redirect(Yii::app()->homeUrl);
-
+			$idCliente = Yii::app()->request->cookies['siadipqiigam']->value;
+			$idCliente = (int)$idCliente;
+			$puntoAcceso = $_GET["puntoAcceso"];
+			$event = new EventLog;
+		    $event->fecha = Date("Y-m-d H:i:s");
+		    $event->punto_acceso_id = PuntoAcceso::model()->find("nombre=:nombre", array(":nombre"=>$puntoAcceso))->id;
+		    $event->cliente_id = Cliente::model()->findByPk($idCliente)->id;
+		    $event->tipo_evento_id = TipoEvento::model()->findByPk(1)->id;
+		    $event->detalles = "inicio de sesion";
+		    $event->validate();
+		    if($event->save())
+		    {
+		    	$cookie = Yii::app()->request->cookies['siadipqiigam'];
+				$cookie->expire = time()+(60*60*24*180);
+				Yii::app()->request->cookies['siadipqiigam']= $cookie;
+				$this->redirect('http://www.merida.gob.mx/municipio/sitiosphp/parques/php/inicio.php');	
+		    }
+			
 		}	
 		
 	}

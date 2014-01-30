@@ -1,0 +1,81 @@
+body
+{
+	
+}
+.cuerpo
+{
+	width: auto;
+	margin: 0px 1%;
+}
+.titulo
+{
+	color: black;
+	padding: 2%;
+	text-align: center;
+}
+#usuario
+{
+	margin: 1%;
+}
+
+.usuario
+{
+	background: #e9e9da;
+	border-radius: 25px;
+	margin: 1% 4%;
+	
+	color: #004489;
+	box-shadow: 3px 0px 1px black, -3px 0px 1px black, 0px 3px 1px black, 0px -3px 1px black;
+	
+}
+.fecha
+{	
+	color:white;
+	background: -webkit-linear-gradient(#97bf0d, #a3ca3f); /* For Safari */
+	background: -o-linear-gradient(#97bf0d, #a3ca3f); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#97bf0d, #a3ca3f); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#97bf0d, #a3ca3f); /* Standard syntax (must be last) */
+}
+.text-right
+{
+	margin-right: 2%;
+	margin-top: .5%;
+}
+.logo
+{
+	padding: 1% 4%;
+}
+.logos
+{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	background: -webkit-linear-gradient(white, #2cbce1); /* For Safari */
+	background: -o-linear-gradient(white, #2cbce1); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(white, #2cbce1); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(white, #2cbce1); /* Standard syntax (must be last) */	
+}
+.logos img
+{
+	height: 100%;
+	width: 50%;
+}
+.parque
+{
+	padding-left: 6%;
+
+}
+.ayuntamiento
+{
+	padding-top: 1%;
+}
+.contenido
+{
+	background: -webkit-linear-gradient(white, #e9e9da); /* For Safari */
+	background: -o-linear-gradient(white, #e9e9da); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(white, #e9e9da); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(white, #e9e9da); /* Standard syntax (must be last) */
+}
+#footer
+{
+	background: #e9e9da;
+}

@@ -4,36 +4,73 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h3>Inicio de Sesión</h3>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<div class= "col-md-7">
+	<div class="form">
+	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+		'id'=>'login-form',
+		'action'=>$this->createUrl("site/login"),
+		'enableClientValidation'=>true,
+		'clientOptions'=>array(
+			'validateOnSubmit'=>true,
+		),
+	)); ?>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+		<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+		
+			<?php echo $form->textFieldControlGroup($login,'username'); ?>
+		
+			<?php echo $form->textFieldControlGroup($login,'password'); ?>
+		
 
-<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+		<div class="row rememberMe">
+			<?php echo $form->checkBox($login,'rememberMe'); ?>
+			<?php echo $form->label($login,'rememberMe'); ?>
+			<?php echo $form->error($login,'rememberMe'); ?>
+		</div>
+
+		<div class="row buttons">
+			<?php echo CHtml::submitButton('Iniciar sesión',array(
+			'class'=>"btn-success btn",
+			)); ?>
+			<?php echo TbHtml::link('Registrarse',$this->createUrl("persona/create"),array(
+			'class' => 'btn-info btn'
+			)); ?>
+		</div>
+
+	<?php $this->endWidget(); ?>
+	</div><!-- form -->
+</div>
+<div class="col-md-5 text-center">
+	<h4>Obtenga beneficios registrandosé</h4>
+	<?php echo TbHtml::popover('Click aqui para informes', 'Beneficios', 'Tendra atencion personalizada, asi como informacion de interes', array(
+    'class' => 'btn btn-warning',
+	)); ?>
+</div>
+
+
+
+
+
+<div class="form text-right col-md-12">
+	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'cliente-form',
-	'action'=>$this->createUrl("site/start"),
+	'action'=>isset($puntoAcceso)? $this->createUrl("site/start", array('puntoAcceso'=>$puntoAcceso)) : $this->createUrl("site/start"),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
-)); ?>
+	)); ?>
 
-<div class="form-actions">
-    <?php echo TbHtml::submitButton("Continuar",array(
+    <?php echo TbHtml::submitButton("Continuar sin registro",array(
 	    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	    'size'=>TbHtml::BUTTON_SIZE_LARGE,
+	    
 	)); ?>
+	<?php $this->endWidget(); ?>
 </div>
 
-<?php $this->endWidget(); ?>
+

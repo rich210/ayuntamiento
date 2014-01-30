@@ -26,7 +26,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('sistema_operativo_id')); ?>:</b>
-	<?php echo CHtml::encode($data->sistema_operativo_id); ?>
+	<?php echo CHtml::encode($data->sistemaOperativo->nombre); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('usuario_id')); ?>:</b>
