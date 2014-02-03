@@ -15,6 +15,8 @@
  * @property string $numeroSerial
  * @property string $lanIp
  * @property string $red_id
+ * @property string $lat
+ * @property string $lng
  *
  * The followings are the available model relations:
  * @property TblEventLog[] $tblEventLogs
@@ -40,7 +42,7 @@ class PuntoAcceso extends CActiveRecord
 		return array(
 			array('status, nombre, ipPublica, codigoProducto, mac, modelo, numeroSerial, lanIp, red_id', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('nombre', 'length', 'max'=>45),
+			array('nombre, lat, lng', 'length', 'max'=>45),
 			array('descripcionProducto', 'length', 'max'=>50),
 			array('ipPublica, mac, lanIp', 'length', 'max'=>20),
 			array('codigoProducto', 'length', 'max'=>30),
@@ -48,7 +50,7 @@ class PuntoAcceso extends CActiveRecord
 			array('numeroSerial', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, status, nombre, descripcionProducto, ipPublica, codigoProducto, mac, modelo, numeroSerial, lanIp, red_id', 'safe', 'on'=>'search'),
+			array('id, status, nombre, descripcionProducto, ipPublica, codigoProducto, mac, modelo, numeroSerial, lanIp, red_id, lat, lng', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +62,7 @@ class PuntoAcceso extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblEventLogs' => array(self::HAS_MANY, 'TblEventLog', 'punto_acceso_id'),
+			'eventLogs' => array(self::HAS_MANY, 'TblEventLog', 'punto_acceso_id'),
 			'red' => array(self::BELONGS_TO, 'TblRed', 'red_id'),
 		);
 	}
@@ -82,6 +84,8 @@ class PuntoAcceso extends CActiveRecord
 			'numeroSerial' => 'Numero Serial',
 			'lanIp' => 'Lan Ip',
 			'red_id' => 'Red',
+			'lat' => 'Latitud',
+			'lng' => 'Longitud',
 		);
 	}
 
@@ -114,6 +118,8 @@ class PuntoAcceso extends CActiveRecord
 		$criteria->compare('numeroSerial',$this->numeroSerial,true);
 		$criteria->compare('lanIp',$this->lanIp,true);
 		$criteria->compare('red_id',$this->red_id,true);
+		$criteria->compare('lat',$this->lat,true);
+		$criteria->compare('lng',$this->lng,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

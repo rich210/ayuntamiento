@@ -6,7 +6,7 @@ class PuntoAccesoController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/ayuntamiento';
 
 	/**
 	 * @return array action filters
@@ -67,11 +67,11 @@ class PuntoAccesoController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['PuntoAcceso'])) {
+		if(isset($_POST['PuntoAcceso']))
+		{
 			$model->attributes=$_POST['PuntoAcceso'];
-			if ($model->save()) {
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			}
 		}
 
 		$this->render('create',array(
@@ -91,11 +91,11 @@ class PuntoAccesoController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if (isset($_POST['PuntoAcceso'])) {
+		if(isset($_POST['PuntoAcceso']))
+		{
 			$model->attributes=$_POST['PuntoAcceso'];
-			if ($model->save()) {
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			}
 		}
 
 		$this->render('update',array(
@@ -110,17 +110,11 @@ class PuntoAccesoController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if (Yii::app()->request->isPostRequest) {
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if (!isset($_GET['ajax'])) {
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-			}
-		} else {
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-		}
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -141,9 +135,8 @@ class PuntoAccesoController extends Controller
 	{
 		$model=new PuntoAcceso('search');
 		$model->unsetAttributes();  // clear any default values
-		if (isset($_GET['PuntoAcceso'])) {
+		if(isset($_GET['PuntoAcceso']))
 			$model->attributes=$_GET['PuntoAcceso'];
-		}
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -160,9 +153,8 @@ class PuntoAccesoController extends Controller
 	public function loadModel($id)
 	{
 		$model=PuntoAcceso::model()->findByPk($id);
-		if ($model===null) {
+		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
-		}
 		return $model;
 	}
 
@@ -172,7 +164,8 @@ class PuntoAccesoController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if (isset($_POST['ajax']) && $_POST['ajax']==='punto-acceso-form') {
+		if(isset($_POST['ajax']) && $_POST['ajax']==='punto-acceso-form')
+		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

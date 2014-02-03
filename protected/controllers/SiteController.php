@@ -6,6 +6,28 @@ class SiteController extends Controller
 	 * Declares class-based actions.
 	 */
 	public $layout = 'main';
+
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index', 'error', 'contact','login','logout','start'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array(),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('general'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+
 	public function actions()
 	{
 		return array(
@@ -215,5 +237,10 @@ class SiteController extends Controller
 		}	
 		
 	}
-	
+
+	public function actionGeneral()
+	{
+		$this->layout= '//layouts/ayuntamiento';
+		$this->render('general');		
+	}
 }

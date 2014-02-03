@@ -50,6 +50,14 @@
 	<?php echo CHtml::encode($data->red_id); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('lat')); ?>:</b>
+	<?php echo CHtml::encode($data->lat); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('lng')); ?>:</b>
+	<?php echo CHtml::encode($data->lng); ?>
+	<br />
+
 	*/ ?>
 
 </div>
