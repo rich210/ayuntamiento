@@ -22,7 +22,7 @@ $this->pageTitle=Yii::app()->name;
 		
 			<?php echo $form->textFieldControlGroup($login,'username'); ?>
 		
-			<?php echo $form->textFieldControlGroup($login,'password'); ?>
+			<?php echo $form->passwordFieldControlGroup($login,'password'); ?>
 		
 
 		<div class="row rememberMe">

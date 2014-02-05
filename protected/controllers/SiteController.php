@@ -6,6 +6,28 @@ class SiteController extends Controller
 	 * Declares class-based actions.
 	 */
 	public $layout = 'main';
+
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index', 'error', 'contact','login','logout','start'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array(),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('general'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+
 	public function actions()
 	{
 		return array(
@@ -32,7 +54,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		//$layout = Hotspot::model()->find("predeterminado=:predeterminado", array(":predeterminado"=>1));
 		//var_dump($layout->html);
-		$this->layout = 'mainBootstrap';
+		
 		$model= new Cliente;
 		$login= new loginForm;
 		if(isset($_GET["puntoAcceso"]))
@@ -110,7 +132,19 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			{
+				echo Yii::app()->user->checkAccess('Aplicacion'); 
+				if(Yii::app()->user->checkAccess('Aplicacion'))
+				{
+					$this->redirect(Yii::app()->getBaseUrl().'/site/general');
+				}
+				else
+				{
+					$this->redirect('http://www.google.com');
+				}
+					
+			}
+				//$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -215,5 +249,10 @@ class SiteController extends Controller
 		}	
 		
 	}
-	
+
+	public function actionGeneral()
+	{
+		$this->layout= '//layouts/ayuntamiento';
+		$this->render('general');		
+	}
 }

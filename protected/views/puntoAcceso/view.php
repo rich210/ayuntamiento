@@ -37,5 +37,7 @@ $this->menu=array(
 		'numeroSerial',
 		'lanIp',
 		'red_id',
+		'lat',
+		'lng',
 	),
 )); ?>

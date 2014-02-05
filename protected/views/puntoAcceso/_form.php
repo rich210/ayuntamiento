@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
     <?php echo $form->errorSummary($model); ?>
 
@@ -50,8 +50,93 @@
                 array( "empty" => 'Seleccione' )
             ); ?>
 
+            <?php 
+                echo CHtml::label("Seleccione el lugar del punto de acceso", "latlng", array('required'=>true));
+                Yii::import('ext.gmap.*');
+                $gMap = new EGMap();
+                $gMap->width= "100%";
+                $gMap->setHeight(500);
+                $gMap->zoom = 12;
+                $gMap->setContainerId("gmap"); 
+                $mapTypeControlOptions = array(
+                  'position' => EGMapControlPosition::RIGHT_TOP,
+                  'style' => EGMap::MAPTYPECONTROL_STYLE_DEFAULT
+                );
+                 
+                $gMap->mapTypeId = EGMap::TYPE_ROADMAP;
+                $gMap->mapTypeControlOptions = $mapTypeControlOptions;
+                 
+                // Preparing InfoWindow with information about our marker.
+                $info_window_a = new EGMapInfoWindow("<div class='gmaps-label' style='color: #000;'>Hi! I'm your marker!</div>");
+                 
+                // Setting up an icon for marker.
+                $icon = new EGMapMarkerImage("http://google-maps-icons.googlecode.com/files/car.png");
+                 
+                $icon->setSize(32, 37);
+                $icon->setAnchor(16, 16.5);
+                $icon->setOrigin(0, 0);
+                 
+                // Saving coordinates after user dragged our marker.
+                $dragevent = new EGMapEvent(
+                    'dragend', 
+                    "function (event) 
+                    { 
+                        $('#PuntoAcceso_lat').val(event.latLng.lat());
+                        $('#PuntoAcceso_lng').val(event.latLng.lng());
+                    }", 
+                    false, 
+                    EGMapEvent::TYPE_EVENT_DEFAULT
+                );
+                 
+                // If we have already created marker - show it
+                if ($model->lat and $model->lng) 
+                {
+                    $marker = new EGMapMarker(
+                        $model->lat, 
+                        $model->lng, 
+                        array('title' => 'googleMaps',
+                            'icon'=>$icon, 
+                            'draggable'=>true), 
+                        'marker', 
+                        array('dragevent'=>$dragevent));
+                    $marker->addHtmlInfoWindow($info_window_a);
+                    $gMap->addMarker($marker);
+                    $gMap->setCenter($model->lat, $model->lng);
+                    $gMap->zoom = 16;
+                 
+                // If we don't have marker in database - make sure user can create one
+                } else {
+                    $gMap->setCenter(20.967778, -89.621667);
+                 
+                    // Setting up new event for user click on map, so marker will be created on place and respectful event added.
+                    $gMap->addEvent(new EGMapEvent(
+                        'click',
+                        'function (event) 
+                        {
+                            var marker = new google.maps.Marker({
+                            position: event.latLng, 
+                            map: '.$gMap->getJsName().',
+                                draggable: true, 
+                                icon: '.$icon->toJs().'
+                            }); 
+                            '.$gMap->getJsName().'.setCenter(event.latLng); 
+                            var dragevent = '.$dragevent->toJs('marker').'; 
+                            $("#PuntoAcceso_lat").val(event.latLng.lat());
+                            $("#PuntoAcceso_lng").val(event.latLng.lng());
+                        }', 
+                        false, 
+                        EGMapEvent::TYPE_EVENT_DEFAULT_ONCE));
+                }
+                $gMap->renderMap(array(), Yii::app()->language);
+                    
+            ?>
+
+            <?php echo $form->textFieldControlGroup($model,'lat',array('span'=>5,'maxlength'=>45,'readOnly'=>true)); ?>
+
+            <?php echo $form->textFieldControlGroup($model,'lng',array('span'=>5,'maxlength'=>45,'readOnly'=>true)); ?>
+
         <div class="form-actions">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(
+        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array(
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>

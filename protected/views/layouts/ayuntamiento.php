@@ -40,24 +40,42 @@
 	<div class="contenido row" >
 
 		<div class="col-md-2 col-xs-12 col-sm-3">
-
+			<?php $this->widget('zii.widgets.CMenu',array(
+				'items'=>array(
+					array('label'=>'Vista General', 'url'=>array('/site/general')),
+					array('label'=>'Estado', 'url'=>array('/estado/index')),
+					array('label'=>'Hotspot', 'url'=>array('/hotspot/index')),
+					array(
+						'label'=>'Punto de Acceso', 
+						'url'=>array('/puntoAcceso/index'), 
+					),
+					array('label'=>'Roles', 'url'=>array('/srbac'), 'itemOptions'=> array('class'=> $this->getModule() ? 'active': '' )),
+					array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				),
+				'htmlOptions'=>array(
+					'class'=>'nav nav-pills nav-stacked',
+				),
+			)); ?>
 		</div>
 		<div class="col-md-10 col-sm-9" id="page">
-			<div class="col-md-12 last">
-				<div id="sidebar">
-				<?php
-					$this->beginWidget('zii.widgets.CPortlet', array(
-						'title'=>'Operaciones',
-					));
-					$this->widget('zii.widgets.CMenu', array(
-						'items'=>$this->menu,
-						'htmlOptions'=>array('class'=>'nav nav-pills'),
-					));
-					$this->endWidget();
-				?>
-				</div><!-- sidebar -->
-			</div>
-			<div class="col-md-10">
+			<?php if($this->getModule()==null):?>
+				<div class="col-md-12 last">
+					<div id="sidebar">
+					<?php
+						$this->beginWidget('zii.widgets.CPortlet', array(
+							'title'=>'Operaciones',
+						));
+						$this->widget('zii.widgets.CMenu', array(
+							'items'=>$this->menu,
+							'htmlOptions'=>array('class'=>'nav nav-pills'),
+						));
+						$this->endWidget();
+					?>
+					</div><!-- sidebar -->
+				</div>
+			<?php endif?>	
+			<div class="col-md-12">
 				<?php echo $content; ?>
 			</div>
 			

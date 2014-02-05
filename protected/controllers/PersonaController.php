@@ -7,7 +7,11 @@ class PersonaController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/ayuntamiento';
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> e4b25e3eddcb0e41122bbe333e44c44dbb850cc8
 	/**
 	 * @return array action filters
 	 */
