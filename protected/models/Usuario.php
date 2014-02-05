@@ -18,6 +18,8 @@
  */
 class Usuario extends CActiveRecord
 {
+	public $vContrasena;
+	public $contrasena2;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,10 +36,13 @@ class Usuario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usuario, contrasena, cancelado, fecha_creacion, fecha_modificacion', 'required'),
+			array('usuario, cancelado, fecha_creacion, fecha_modificacion', 'required'),
 			array('cancelado', 'numerical', 'integerOnly'=>true),
-			array('usuario', 'length', 'max'=>50),
-			array('contrasena', 'length', 'max'=>80),
+			array('vContrasena,contrasena2', 'required', 'on'=>'crearUsuario, crearPersona'),
+			array('usuario','unique'),
+			array('usuario','length', 'max'=>50),
+			array(' contrasena', 'length', 'max'=>80),
+			array('contrasena2', 'compare', 'compareAttribute' => 'vContrasena', 'on' => 'crearPersona'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, usuario, contrasena, cancelado, fecha_creacion, fecha_modificacion', 'safe', 'on'=>'search'),
@@ -66,7 +71,8 @@ class Usuario extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'usuario' => 'Usuario',
-			'contrasena' => 'Contrasena',
+			'contrasena2' => 'Contraseña',
+			'vContrasena' => 'Repetir Contraseña',
 			'cancelado' => 'Cancelado',
 			'fecha_creacion' => 'Fecha Creacion',
 			'fecha_modificacion' => 'Fecha Modificacion',
@@ -112,5 +118,17 @@ class Usuario extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	public function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if(isset($this->contrasena2) && ($this->contrasena2!= ""))
+			{
+				$this->contrasena = crypt($this->contrasena2);
+			}
+			return true;
+		}
+		return false;
 	}
 }

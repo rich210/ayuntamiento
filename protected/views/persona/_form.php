@@ -12,10 +12,10 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
     <?php echo $form->errorSummary(array($model, $usuario)); ?>
 
@@ -150,7 +150,9 @@
 
             <?php echo $form->textFieldControlGroup($usuario,'usuario',array('span'=>5,'maxlength'=>50)); ?>
 
-            <?php echo $form->passwordFieldControlGroup($usuario,'contrasena',array('span'=>5,'maxlength'=>80)); ?>
+            <?php echo $form->passwordFieldControlGroup($usuario,'contrasena2',array('span'=>5,'maxlength'=>80)); ?>
+			
+			<?php echo $form->passwordFieldControlGroup($usuario,'vContrasena',array('span'=>5,'maxlength'=>80)); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

@@ -6,8 +6,8 @@ class PersonaController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
-
+	public $layout='//layouts/ayuntamiento';
+	
 	/**
 	 * @return array action filters
 	 */
@@ -63,7 +63,7 @@ class PersonaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Persona;
-		$usuario = new Usuario;
+		$usuario = new Usuario('crearPersona');
 		
 		
 
@@ -82,7 +82,8 @@ class PersonaController extends Controller
 			$usuario->cancelado= 0;
 			$usuario->validate();
 			
-			if($usuario->save())
+			
+			if($usuario->beforeSave() && $usuario->save())
 			{
 				$model->usuario_id = $usuario->id;
 				$model->validate();
@@ -100,6 +101,7 @@ class PersonaController extends Controller
 						
 					}
 					$this->redirect(array('view','id'=>$model->id));
+					
 				}
 				
 			}

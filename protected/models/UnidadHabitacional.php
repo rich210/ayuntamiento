@@ -41,7 +41,7 @@ class UnidadHabitacional extends CActiveRecord
 			array('nombre, codigo_postal, cancelado, fecha_creacion, fecha_modificacion, pais_id, estado_id, municipio_id', 'required'),
 			array('cancelado', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>50),
-			array('codigo_postal', 'length', 'max'=>8),
+			array('codigo_postal','numerical', 'integerOnly'=>true),
 			array('pais_id, estado_id, municipio_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

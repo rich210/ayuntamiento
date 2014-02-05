@@ -66,6 +66,8 @@ class Persona extends CActiveRecord
 			array('nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id, intereses', 'required'),
 			array('genero, bloqueo', 'numerical', 'integerOnly'=>true),
 			array('titulo, email', 'length', 'max'=>45),
+			array('email', 'email' ),
+			array('telefono','numerical'),
 			array('nombre, apellido_paterno, apellido_materno', 'length', 'max'=>50),
 			array('telefono, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'length', 'max'=>10),
 			// The following rule is used by search().
@@ -73,7 +75,7 @@ class Persona extends CActiveRecord
 			array('id, titulo, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, direccion, telefono, email, genero, bloqueo, fecha_creacion, fecha_modificacion, nivel_estudios_id, ocupacion_id, estado_civil_id, nacionalidad_id, equipo_conexion_id, usabilidad_servicio_id, pais_id, estado_id, municipio_id, unidad_habitacional_id, usuario_id', 'safe', 'on'=>'search'),
 		);
 	}
-
+		
 	/**
 	 * @return array relational rules.
 	 */
