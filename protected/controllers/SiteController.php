@@ -54,7 +54,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		//$layout = Hotspot::model()->find("predeterminado=:predeterminado", array(":predeterminado"=>1));
 		//var_dump($layout->html);
-		$this->layout = 'mainBootstrap';
+		
 		$model= new Cliente;
 		$login= new loginForm;
 		if(isset($_GET["puntoAcceso"]))
@@ -132,7 +132,19 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			{
+				echo Yii::app()->user->checkAccess('Aplicacion'); 
+				if(Yii::app()->user->checkAccess('Aplicacion'))
+				{
+					$this->redirect(Yii::app()->getBaseUrl().'/site/general');
+				}
+				else
+				{
+					$this->redirect('http://www.google.com');
+				}
+					
+			}
+				//$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));

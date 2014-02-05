@@ -79,11 +79,13 @@ input
 {
 	height: 30px;
 }
-.gmap
+.gmap, #gmap
 {
-	margin: 3% 1%;
+	margin: 2% 1%;
 }
 #footer
 {
 	background: #e9e9da;
 }
+
+/* Empieza el modulo de srbac*/

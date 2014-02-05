@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
     <?php echo $form->errorSummary($model); ?>
 
@@ -51,11 +51,13 @@
             ); ?>
 
             <?php 
+                echo CHtml::label("Seleccione el lugar del punto de acceso", "latlng", array('required'=>true));
                 Yii::import('ext.gmap.*');
                 $gMap = new EGMap();
                 $gMap->width= "100%";
                 $gMap->setHeight(500);
                 $gMap->zoom = 12;
+                $gMap->setContainerId("gmap"); 
                 $mapTypeControlOptions = array(
                   'position' => EGMapControlPosition::RIGHT_TOP,
                   'style' => EGMap::MAPTYPECONTROL_STYLE_DEFAULT
@@ -79,14 +81,8 @@
                     'dragend', 
                     "function (event) 
                     { 
-                        $.ajax({
-                            'type':'POST',
-                            'url':'".$this->createUrl('puntoAcceso/create')."',
-                            'data':({ 'lat' : event.latLng.lat(),  'lng' : event.latLng.lng()}),
-                            'cache':false,
-                        }).done(function( data ) {
-                            alert( 'Sample of data:', event.latLng.lat() )
-                        });
+                        $('#PuntoAcceso_lat').val(event.latLng.lat());
+                        $('#PuntoAcceso_lng').val(event.latLng.lng());
                     }", 
                     false, 
                     EGMapEvent::TYPE_EVENT_DEFAULT
@@ -125,17 +121,8 @@
                             }); 
                             '.$gMap->getJsName().'.setCenter(event.latLng); 
                             var dragevent = '.$dragevent->toJs('marker').'; 
-                            $.ajax({'.
-                                '"type":"POST",'.
-                                '"url":"'.$this->createUrl('puntoAcceso/create').'",'.
-                                '"dataType": "text",'.
-                                '"data":({ "lat" : event.latLng.lat(),  "lng" : event.latLng.lng()}),'.
-                                '"cache":false,'.
-                            '}).done(function( data ) {
-                                if ( console && console.log ) {
-                                  console.log( "Sample of data:", event.latLng.lat() );
-                                }
-                            }); 
+                            $("#PuntoAcceso_lat").val(event.latLng.lat());
+                            $("#PuntoAcceso_lng").val(event.latLng.lng());
                         }', 
                         false, 
                         EGMapEvent::TYPE_EVENT_DEFAULT_ONCE));
@@ -144,12 +131,12 @@
                     
             ?>
 
-            <?php echo $form->textFieldControlGroup($model,'lat',array('span'=>5,'maxlength'=>45)); ?>
+            <?php echo $form->textFieldControlGroup($model,'lat',array('span'=>5,'maxlength'=>45,'readOnly'=>true)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'lng',array('span'=>5,'maxlength'=>45)); ?>
+            <?php echo $form->textFieldControlGroup($model,'lng',array('span'=>5,'maxlength'=>45,'readOnly'=>true)); ?>
 
         <div class="form-actions">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(
+        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array(
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>

@@ -66,12 +66,16 @@ class PuntoAccesoController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		
 
 		if(isset($_POST['PuntoAcceso']))
 		{
+			var_dump($_POST);
+			
 			$model->attributes=$_POST['PuntoAcceso'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+				
 		}
 
 		$this->render('create',array(

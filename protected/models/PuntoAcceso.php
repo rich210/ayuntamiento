@@ -108,18 +108,18 @@ class PuntoAcceso extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('nombre',$this->nombre,true);
-		$criteria->compare('descripcionProducto',$this->descripcionProducto,true);
-		$criteria->compare('ipPublica',$this->ipPublica,true);
-		$criteria->compare('codigoProducto',$this->codigoProducto,true);
-		$criteria->compare('mac',$this->mac,true);
-		$criteria->compare('modelo',$this->modelo,true);
-		$criteria->compare('numeroSerial',$this->numeroSerial,true);
-		$criteria->compare('lanIp',$this->lanIp,true);
-		$criteria->compare('red_id',$this->red_id,true);
-		$criteria->compare('lat',$this->lat,true);
-		$criteria->compare('lng',$this->lng,true);
+		//$criteria->compare('status',$this->status);
+		//$criteria->compare('nombre',$this->nombre,true);
+		//$criteria->compare('descripcionProducto',$this->descripcionProducto,true);
+		//$criteria->compare('ipPublica',$this->ipPublica,true);
+		//$criteria->compare('codigoProducto',$this->codigoProducto,true);
+		//$criteria->compare('mac',$this->mac,true);
+		//$criteria->compare('modelo',$this->modelo,true);
+		//$criteria->compare('numeroSerial',$this->numeroSerial,true);
+		//$criteria->compare('lanIp',$this->lanIp,true);
+		//$criteria->compare('red_id',$this->red_id,true);
+		//$criteria->compare('lat',$this->lat,true);
+		//$criteria->compare('lng',$this->lng,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
