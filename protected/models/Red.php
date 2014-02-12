@@ -56,10 +56,10 @@ class Red extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblPaginaInteresReds' => array(self::HAS_MANY, 'TblPaginaInteresRed', 'red_id'),
-			'tblPuntoAccesos' => array(self::HAS_MANY, 'TblPuntoAcceso', 'red_id'),
-			'zona' => array(self::BELONGS_TO, 'TblZonaCiudad', 'zona_id'),
-			'tblRedHotspots' => array(self::HAS_MANY, 'TblRedHotspot', 'red_id'),
+			'paginaInteresReds' => array(self::HAS_MANY, 'PaginaInteresRed', 'red_id'),
+			'puntoAccesos' => array(self::HAS_MANY, 'PuntoAcceso', 'red_id'),
+			'zona' => array(self::BELONGS_TO, 'ZonaCiudad', 'zona_id'),
+			'redHotspots' => array(self::HAS_MANY, 'RedHotspot', 'red_id'),
 		);
 	}
 

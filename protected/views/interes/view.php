@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Interes', 'url'=>array('index')),
-	array('label'=>'Create Interes', 'url'=>array('create')),
-	array('label'=>'Update Interes', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Interes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Interes', 'url'=>array('admin')),
+	array('label'=>'Listar Intereses', 'url'=>array('index')),
+	array('label'=>'Registrar Interes', 'url'=>array('create')),
+	array('label'=>'Actualizar Interes', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Interes', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Intereses', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Interes #<?php echo $model->id; ?></h1>
+<h1>Ver Interes #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

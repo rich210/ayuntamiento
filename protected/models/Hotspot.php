@@ -21,6 +21,8 @@ class Hotspot extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	public $red;
+
 	public function tableName()
 	{
 		return 'tbl_hotspot';
@@ -36,11 +38,11 @@ class Hotspot extends CActiveRecord
 		return array(
 			array('nombre, html, fecha_creacion, fecha_modificacion, caducidad, predeterminado', 'required'),
 			array('predeterminado', 'numerical', 'integerOnly'=>true),
-			array('nombre', 'length', 'max'=>45),
+			array('nombre, red', 'length', 'max'=>45),
 			array('descripcion', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nombre, descripcion, html, fecha_creacion, fecha_modificacion, caducidad, predeterminado', 'safe', 'on'=>'search'),
+			array('id, nombre, descripcion, html, fecha_creacion, fecha_modificacion, caducidad, predeterminado, red', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +54,7 @@ class Hotspot extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblRedHotspots' => array(self::HAS_MANY, 'TblRedHotspot', 'hotspot_id'),
+			'redHotspots' => array(self::HAS_MANY, 'RedHotspot', 'hotspot_id'),
 		);
 	}
 
@@ -70,6 +72,7 @@ class Hotspot extends CActiveRecord
 			'fecha_modificacion' => 'Fecha Modificacion',
 			'caducidad' => 'Caducidad',
 			'predeterminado' => 'Predeterminado',
+			'red'=>'Red a cual publicar'
 		);
 	}
 

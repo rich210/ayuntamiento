@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ayuntamiento.css" />
+	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -33,7 +34,10 @@
 		</div>
 		<div class="col-md-3 usuario">
 			<?php echo "<h4 class='text-center' id='usuario'>".Yii::app()->user->name."</h4>" ?>
-			<?php echo "<p class='text-right'>".date('l').", ".date('d')." de ".date('F'). " de ". date('Y')."</p>" ; ?>
+			<?php 
+				$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+				$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+				echo "<p class='text-right'>".$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ". date('Y')."</p>" ; ?>
 		</div>
 		
 	</div>

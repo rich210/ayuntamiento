@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create ZonaCiudad','url'=>array('create')),
-	array('label'=>'Manage ZonaCiudad','url'=>array('admin')),
+	array('label'=>'Registrar Zona de la Ciudad','url'=>array('create')),
+	array('label'=>'Administrar Zonas de la Ciudad','url'=>array('admin')),
 );
 ?>
 
-<h1>Zona Ciudads</h1>
+<h1>Zonas de la Ciudad</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

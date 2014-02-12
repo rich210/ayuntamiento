@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Hotspot', 'url'=>array('index')),
-	array('label'=>'Create Hotspot', 'url'=>array('create')),
-	array('label'=>'Update Hotspot', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Hotspot', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Hotspot', 'url'=>array('admin')),
+	array('label'=>'Listar Hotspots', 'url'=>array('index')),
+	array('label'=>'Registrar Hotspot', 'url'=>array('create')),
+	array('label'=>'Actualizarr Hotspot', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Hotspot', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Hotspots', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Hotspot #<?php echo $model->id; ?></h1>
+<h1>Ver Hotspot #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

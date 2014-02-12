@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Equipo Conexions',
+	'Equipos de Conexión',
 );
 
 $this->menu=array(
-	array('label'=>'Create EquipoConexion','url'=>array('create')),
-	array('label'=>'Manage EquipoConexion','url'=>array('admin')),
+	array('label'=>'Registrar Equipo de Conexión','url'=>array('create')),
+	array('label'=>'Administrar Equipos de Conexión','url'=>array('admin')),
 );
 ?>
 
-<h1>Equipo Conexions</h1>
+<h1>Equipos de Conexión</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

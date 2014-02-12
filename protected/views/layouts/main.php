@@ -24,7 +24,11 @@
 <body>
 <div class= "cuerpo">
 	<div class ="fecha row" >
-		<?php echo "<p class='text-right'>".date('l').", ".date('d')." de ".date('F'). " de ". date('Y')."</p>" ; ?>
+		<?php 
+			$dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+			$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+			echo "<p class='text-right'>".$dias[date('w')].", ".date('d')." de ".$meses[date('n')-1]. " del ". date('Y')."</p>" ; ?>
+			
 	</div>
 	<div class = "logos row">
 		<div class="logo parque col-md-8 "><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/parques_logo.png" alt="logo parques en linea"></div>

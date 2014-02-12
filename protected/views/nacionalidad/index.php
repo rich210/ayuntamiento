@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nacionalidads',
+	'Nacionalidades',
 );
 
 $this->menu=array(
-	array('label'=>'Create Nacionalidad','url'=>array('create')),
-	array('label'=>'Manage Nacionalidad','url'=>array('admin')),
+	array('label'=>'Registrar Nacionalidad','url'=>array('create')),
+	array('label'=>'Administrar Nacionalidad','url'=>array('admin')),
 );
 ?>
 
-<h1>Nacionalidads</h1>
+<h1>Nacionalidades</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

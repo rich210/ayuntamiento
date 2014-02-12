@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Municipio','url'=>array('create')),
-	array('label'=>'Manage Municipio','url'=>array('admin')),
+	array('label'=>'Registrar Municipio','url'=>array('create')),
+	array('label'=>'Administrar Municipios','url'=>array('admin')),
 );
 ?>
 

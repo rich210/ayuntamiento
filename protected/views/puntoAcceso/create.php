@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Punto Accesos'=>array('index'),
-	'Create',
+	'Antenas'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List PuntoAcceso', 'url'=>array('index')),
-	array('label'=>'Manage PuntoAcceso', 'url'=>array('admin')),
+	array('label'=>'Listar Antenas', 'url'=>array('index')),
+	array('label'=>'Administrar Antenas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create PuntoAcceso</h1>
+<h1>Registrar Antena</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

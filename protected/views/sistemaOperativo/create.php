@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Sistema Operativos'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List SistemaOperativo', 'url'=>array('index')),
-	array('label'=>'Manage SistemaOperativo', 'url'=>array('admin')),
+	array('label'=>'Listar Sistemas Operativos', 'url'=>array('index')),
+	array('label'=>'Administrar Sistemas Operativos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create SistemaOperativo</h1>
+<h1>Registrar Sistema Operativo</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Ocupacions'=>array('index'),
-	'Create',
+	'Ocupaciones'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Ocupacion', 'url'=>array('index')),
-	array('label'=>'Manage Ocupacion', 'url'=>array('admin')),
+	array('label'=>'Listar Ocupaciones', 'url'=>array('index')),
+	array('label'=>'Administrar Ocupaciones', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Ocupacion</h1>
+<h1>Registrar Ocupación</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

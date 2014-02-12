@@ -16,7 +16,7 @@
     'enableClientValidation'=>true,
 )); ?>
 
-    <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
     <?php echo $form->errorSummary($model); ?>
 
@@ -41,10 +41,26 @@
             ?>
             <?php echo $form->error($model,'caducidad'); ?>
 
-            <?php echo $form->dropDownListControlGroup($model,'predeterminado',array('empty'=>'Seleccione', 1 => 'Si', 0 => 'No')); ?>
+            <?php echo $form->dropDownListControlGroup(
+                $model,
+                'predeterminado',
+                array('empty'=>'Seleccione', '1' => 'Si', '0' => 'No'),
+                array(
+                    'ajax' => array(
+                        'type' => 'POST',
+                        'url' => $this->createUrl('ajaxHotspotPredeterminado'),
+                        'update' => '#Hotspot_red',
+                    )
+                )
+                ); ?>
+
+            <?php echo $form->dropDownListControlGroup(
+                $model,
+                'red',
+                array('empty'=>'Seleccione')); ?>
 
         <div class="form-actions">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(
+        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Actualizar',array(
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>

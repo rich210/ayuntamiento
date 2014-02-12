@@ -9,9 +9,9 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Sistema integral para la administración de información en parques públicos con internet inalámbrico gratuito del Ayuntamiento de Mérida',
 	'language'=>'es',
-	'sourceLanguage'=>'es',
+	'sourceLanguage'=>'en',
 	'charset'=>'utf-8',
-	'timeZone'=>'America/Mexico_City',
+	'timeZone'=>'America/Merida',
 	'layout' => 'column2',
 
 	// preloading 'log' component
@@ -41,6 +41,7 @@ return array(
 		),
 		'srbac' => array(
 			'userclass'=>'Usuario', //default: User
+
 			'userid'=>'id', //default: userid
 			'username'=>'usuario', //default:username
 			'delimeter'=>'@', //default:-

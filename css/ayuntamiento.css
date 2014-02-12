@@ -79,9 +79,12 @@ input
 {
 	height: 30px;
 }
-.gmap, #gmap
+.gmapCont, #gmapCont
 {
 	margin: 2% 1%;
+}
+.menuZonaRedPunto{
+	margin: 2% 0%;
 }
 #footer
 {

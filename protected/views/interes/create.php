@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Interes'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Interes', 'url'=>array('index')),
-	array('label'=>'Manage Interes', 'url'=>array('admin')),
+	array('label'=>'Listar Intereses', 'url'=>array('index')),
+	array('label'=>'Adminstrar Interes', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Interes</h1>
+<h1>Registrar Interes</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

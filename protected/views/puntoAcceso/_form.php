@@ -51,7 +51,7 @@
             ); ?>
 
             <?php 
-                echo CHtml::label("Seleccione el lugar del punto de acceso", "latlng", array('required'=>true));
+                echo CHtml::label("Seleccione el lugar de la antena", "latlng", array('required'=>true));
                 Yii::import('ext.gmap.*');
                 $gMap = new EGMap();
                 $gMap->width= "100%";
@@ -136,7 +136,7 @@
             <?php echo $form->textFieldControlGroup($model,'lng',array('span'=>5,'maxlength'=>45,'readOnly'=>true)); ?>
 
         <div class="form-actions">
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array(
+        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Actualizar',array(
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?>

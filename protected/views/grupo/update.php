@@ -7,17 +7,17 @@
 $this->breadcrumbs=array(
 	'Grupos'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Grupo', 'url'=>array('index')),
-	array('label'=>'Create Grupo', 'url'=>array('create')),
-	array('label'=>'View Grupo', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Grupo', 'url'=>array('admin')),
+	array('label'=>'Listar Grupos', 'url'=>array('index')),
+	array('label'=>'Registrar Grupo', 'url'=>array('create')),
+	array('label'=>'Ver Grupos', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Grupo', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Grupo <?php echo $model->id; ?></h1>
+    <h1>Actualizar Grupo <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

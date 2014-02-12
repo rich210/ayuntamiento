@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create UsabilidadServicio','url'=>array('create')),
-	array('label'=>'Manage UsabilidadServicio','url'=>array('admin')),
+	array('label'=>'Registrar Uso del Servicio','url'=>array('create')),
+	array('label'=>'Administrar Usos del Servicio','url'=>array('admin')),
 );
 ?>
 
-<h1>Usabilidad Servicios</h1>
+<h1>Usos del Servicio</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

@@ -14,7 +14,7 @@
  * @since 1.0.0
  */
  ?>
-<div class="title"><?php echo Helper::translate('srbac','Crear un nuevo objeto') ?></div>
+<div class="title"><?php echo Helper::translate('srbac','Create New Item') ?></div>
 
 <?php echo $this->renderPartial('manage/_form', array(
 	'model'=>$model,

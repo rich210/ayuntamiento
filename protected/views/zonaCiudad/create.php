@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Zona Ciudads'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List ZonaCiudad', 'url'=>array('index')),
-	array('label'=>'Manage ZonaCiudad', 'url'=>array('admin')),
+	array('label'=>'Listar Zonas de la Ciudad', 'url'=>array('index')),
+	array('label'=>'Administrar Zonas de la Ciudad', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create ZonaCiudad</h1>
+<h1>Registrar Zona de la Ciudad</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

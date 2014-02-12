@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List UnidadHabitacional', 'url'=>array('index')),
-	array('label'=>'Create UnidadHabitacional', 'url'=>array('create')),
-	array('label'=>'Update UnidadHabitacional', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete UnidadHabitacional', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage UnidadHabitacional', 'url'=>array('admin')),
+	array('label'=>'Listar Unidades Habitacionales', 'url'=>array('index')),
+	array('label'=>'Registrar Unidad Habitacional', 'url'=>array('create')),
+	array('label'=>'Actualizar Unidad Habitacional', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Unidad Habitacional', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Unidades Habitacionales', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View UnidadHabitacional #<?php echo $model->id; ?></h1>
+<h1>Ver Unidad Habitacional #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

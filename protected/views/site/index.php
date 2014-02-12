@@ -44,8 +44,8 @@ $this->pageTitle=Yii::app()->name;
 	</div><!-- form -->
 </div>
 <div class="col-md-5 text-center">
-	<h4>Obtenga beneficios registrandosé</h4>
-	<?php echo TbHtml::popover('Click aqui para informes', 'Beneficios', 'Tendra atencion personalizada, asi como informacion de interes', array(
+	<h4>Obtenga beneficios registrándose</h4>
+	<?php echo TbHtml::popover('Click aqui', 'Beneficios', 'Tendra atencion personalizada, asi como informacion de interes', array(
     'class' => 'btn btn-warning',
 	)); ?>
 </div>

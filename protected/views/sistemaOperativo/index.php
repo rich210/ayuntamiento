@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create SistemaOperativo','url'=>array('create')),
-	array('label'=>'Manage SistemaOperativo','url'=>array('admin')),
+	array('label'=>'Registrar Sistema Operativo','url'=>array('create')),
+	array('label'=>'Administrar Sistemas Operativos','url'=>array('admin')),
 );
 ?>
 
-<h1>Sistema Operativos</h1>
+<h1>Sistemas Operativos</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

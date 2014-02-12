@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Ocupacions',
+	'Ocupaciones',
 );
 
 $this->menu=array(
-	array('label'=>'Create Ocupacion','url'=>array('create')),
-	array('label'=>'Manage Ocupacion','url'=>array('admin')),
+	array('label'=>'Registrar Ocupación','url'=>array('create')),
+	array('label'=>'Administrar Ocupaciones','url'=>array('admin')),
 );
 ?>
 
-<h1>Ocupacions</h1>
+<h1>Ocupaciones</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

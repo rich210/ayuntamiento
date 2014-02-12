@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Tipo Eventos'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List TipoEvento', 'url'=>array('index')),
-	array('label'=>'Manage TipoEvento', 'url'=>array('admin')),
+	array('label'=>'Listar Tipos de Eventos', 'url'=>array('index')),
+	array('label'=>'Administrar Tipos de Eventos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create TipoEvento</h1>
+<h1>Registrar Tipo de Evento</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

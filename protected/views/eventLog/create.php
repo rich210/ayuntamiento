@@ -6,12 +6,12 @@
 <?php
 $this->breadcrumbs=array(
 	'Event Logs'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List EventLog', 'url'=>array('index')),
-	array('label'=>'Manage EventLog', 'url'=>array('admin')),
+	array('label'=>'Listar Event Log', 'url'=>array('index')),
+	array('label'=>'Administrar Event Log', 'url'=>array('admin')),
 );
 ?>
 

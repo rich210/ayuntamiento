@@ -79,11 +79,11 @@ class AuthItem extends CActiveRecord {
    */
   public function attributeLabels() {
     return array(
-    'name'=>Helper::translate('srbac','Name'),
-    'type'=>Helper::translate('srbac','Type'),
-    'description'=>Helper::translate('srbac','Description'),
-    'bizrule'=>Helper::translate('srbac','Bizrule'),
-    'data'=>Helper::translate('srbac','Data'),
+    'name'=>Helper::translate('srbac','Nombre'),
+    'type'=>Helper::translate('srbac','Tipo'),
+    'description'=>Helper::translate('srbac','Descripción'),
+    'bizrule'=>Helper::translate('srbac','Regla de negocios'),
+    'data'=>Helper::translate('srbac','Datos'),
     );
   }
 

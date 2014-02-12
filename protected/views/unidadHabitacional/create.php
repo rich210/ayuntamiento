@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Unidad Habitacionals'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List UnidadHabitacional', 'url'=>array('index')),
-	array('label'=>'Manage UnidadHabitacional', 'url'=>array('admin')),
+	array('label'=>'Listar Unidades Habitacionales', 'url'=>array('index')),
+	array('label'=>'Administrar Unidades Habitacionales', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create UnidadHabitacional</h1>
+<h1>Registrar Unidad Habitacional</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

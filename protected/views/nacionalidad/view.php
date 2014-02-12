@@ -5,20 +5,20 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nacionalidads'=>array('index'),
+	'Nacionalidades'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Nacionalidad', 'url'=>array('index')),
-	array('label'=>'Create Nacionalidad', 'url'=>array('create')),
-	array('label'=>'Update Nacionalidad', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Nacionalidad', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Nacionalidad', 'url'=>array('admin')),
+	array('label'=>'Listar Nacionalidades', 'url'=>array('index')),
+	array('label'=>'Registrar Nacionalidad', 'url'=>array('create')),
+	array('label'=>'Actualizar Nacionalidad', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Nacionalidad', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Nacionalidades', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Nacionalidad #<?php echo $model->id; ?></h1>
+<h1>Ver Nacionalidad #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

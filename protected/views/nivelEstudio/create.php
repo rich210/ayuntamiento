@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nivel Estudios'=>array('index'),
-	'Create',
+	'Niveles de Estudios'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List NivelEstudio', 'url'=>array('index')),
-	array('label'=>'Manage NivelEstudio', 'url'=>array('admin')),
+	array('label'=>'Listar Niveles de Estudios', 'url'=>array('index')),
+	array('label'=>'Administrar Niveles de Estudios', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create NivelEstudio</h1>
+<h1>Registrar Nivel de Estudio</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

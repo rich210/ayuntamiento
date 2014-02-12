@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Pagina Interes Reds'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List PaginaInteresRed', 'url'=>array('index')),
-	array('label'=>'Manage PaginaInteresRed', 'url'=>array('admin')),
+	array('label'=>'Listar Páginas Interés Parques', 'url'=>array('index')),
+	array('label'=>'Administrar Paginas Interés Parques', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create PaginaInteresRed</h1>
+<h1>Registrar Página Interés Parque</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Pais','url'=>array('create')),
-	array('label'=>'Manage Pais','url'=>array('admin')),
+	array('label'=>'Registrar País','url'=>array('create')),
+	array('label'=>'Administrar Países','url'=>array('admin')),
 );
 ?>
 
-<h1>Paises</h1>
+<h1>Países</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

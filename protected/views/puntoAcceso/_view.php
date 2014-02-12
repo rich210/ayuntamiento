@@ -33,7 +33,7 @@
 	<?php echo CHtml::encode($data->mac); ?>
 	<br />
 
-	<?php /*
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('modelo')); ?>:</b>
 	<?php echo CHtml::encode($data->modelo); ?>
 	<br />
@@ -58,6 +58,6 @@
 	<?php echo CHtml::encode($data->lng); ?>
 	<br />
 
-	*/ ?>
+	
 
 </div>

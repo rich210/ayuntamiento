@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Red','url'=>array('create')),
-	array('label'=>'Manage Red','url'=>array('admin')),
+	array('label'=>'Registrar Parque','url'=>array('create')),
+	array('label'=>'Administrar Parques','url'=>array('admin')),
 );
 ?>
 
-<h1>Reds</h1>
+<h1>Parques</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

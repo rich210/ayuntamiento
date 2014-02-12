@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Estado Civils'=>array('index'),
-	'Create',
+	'Estados Civiles'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List EstadoCivil', 'url'=>array('index')),
-	array('label'=>'Manage EstadoCivil', 'url'=>array('admin')),
+	array('label'=>'Listar Estados Civiles', 'url'=>array('index')),
+	array('label'=>'Administrar Estados Civiles', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create EstadoCivil</h1>
+<h1>Registrar Estado Civil</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

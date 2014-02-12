@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nivel Estudios',
+	'Niveles de Estudios',
 );
 
 $this->menu=array(
-	array('label'=>'Create NivelEstudio','url'=>array('create')),
-	array('label'=>'Manage NivelEstudio','url'=>array('admin')),
+	array('label'=>'Registrar Nivel de Estudio','url'=>array('create')),
+	array('label'=>'Administrar Niveles de Estudios','url'=>array('admin')),
 );
 ?>
 
-<h1>Nivel Estudios</h1>
+<h1>Niveles de Estudios</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

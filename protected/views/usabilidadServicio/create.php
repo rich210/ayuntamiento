@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Usabilidad Servicios'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List UsabilidadServicio', 'url'=>array('index')),
-	array('label'=>'Manage UsabilidadServicio', 'url'=>array('admin')),
+	array('label'=>'Listar Usos del Servicio', 'url'=>array('index')),
+	array('label'=>'Administrar Usos del Servicio', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create UsabilidadServicio</h1>
+<h1>Registrar Uso Servicio</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

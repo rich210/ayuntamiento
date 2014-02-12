@@ -34,13 +34,13 @@
 <?php
        echo SHtml::ajaxLink(
          SHtml::image($this->module->getIconsPath() . '/create.png',
-           Helper::translate('srbac', 'Crear'),
+           Helper::translate('srbac', 'Create'),
            array('border' => 0,
-               'class' => 'icon', 'title' => Helper::translate('srbac', 'Crear'),
+               'class' => 'icon', 'title' => Helper::translate('srbac', 'Create'),
                'border' => 0
            )
-         ) . Helper::translate('srbac', 'Crear'),
-         array('Create'),
+         ) . Helper::translate('srbac', 'Create'),
+         array('create'),
          array(
              'type' => 'POST',
              'update' => '#preview',
@@ -55,7 +55,7 @@
      </div>
      <div style="margin: 0px">
     <?php
-       echo Helper::translate('srbac', 'Buscar') . ': &nbsp; ';
+       echo Helper::translate('srbac', 'Search') . ': &nbsp; ';
        $this->widget('CAutoComplete',
          array(
              'name' => 'name',
@@ -89,13 +89,13 @@
    <br />
    <table class="srbacDataGrid">
      <tr>
-       <th><?php echo Helper::translate('srbac', 'Nombre'); ?></th>
+       <th><?php echo Helper::translate('srbac', 'Name'); ?></th>
        <th>
       <?php
        echo SHtml::dropDownList('selectedType', Yii::app()->user->getState("selectedType"),
          AuthItem::$TYPES,
          array(
-             'prompt' => Helper::translate('srbac', 'Todos'),
+             'prompt' => Helper::translate('srbac', 'All'),
              'live' => false,
              'ajax' => array(
                  'type' => 'POST',
@@ -112,7 +112,7 @@
        );
       ?>
      </th>
-     <th colspan="2"><?php echo Helper::translate('srbac', 'Acciones') ?></th>
+     <th colspan="2"><?php echo Helper::translate('srbac', 'Actions') ?></th>
    </tr>
 <?php foreach ($models as $n => $model): ?>
          <tr class="<?php echo $n % 2 ? 'even' : 'odd'; ?>">
@@ -134,8 +134,8 @@
       <?php
          echo SHtml::ajaxLink(
            SHtml::image($this->module->getIconsPath() . '/update.png',
-             Helper::translate('srbac', 'Actualizar'),
-             array('border' => 0, 'title' => Helper::translate('srbac', 'Actualizar'))),
+             Helper::translate('srbac', 'Update'),
+             array('border' => 0, 'title' => Helper::translate('srbac', 'Update'))),
            array('update', 'id' => $model->name),
            array(
                'type' => 'POST',
@@ -154,7 +154,7 @@
            echo SHtml::ajaxLink(
              SHtml::image($this->module->getIconsPath() . '/delete.png'
                , Helper::translate('srbac', 'Delete'),
-               array('border' => 0, 'title' => Helper::translate('srbac', 'Eliminar'))),
+               array('border' => 0, 'title' => Helper::translate('srbac', 'Delete'))),
              array('confirm', 'id' => $model->name),
              array(
                  'type' => 'POST',

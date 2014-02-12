@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Pagina Webs'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List PaginaWeb', 'url'=>array('index')),
-	array('label'=>'Manage PaginaWeb', 'url'=>array('admin')),
+	array('label'=>'Listar Páginas Webs', 'url'=>array('index')),
+	array('label'=>'Administrar Páginas Webs', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create PaginaWeb</h1>
+<h1>Registrar Página Web</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

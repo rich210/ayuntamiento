@@ -146,5 +146,6 @@ return array (
   "select user"=>"seleccionar usuario",
   "You are not authorized for this action"=>"No está autorizado para realizar esta acción",
   "Error while trying to access"=>"Error al tratar de acceder",
+  'Assignments of user : '=>'Permisos del usuario : '
 );
 ?>

@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create PaginaWeb','url'=>array('create')),
-	array('label'=>'Manage PaginaWeb','url'=>array('admin')),
+	array('label'=>'Registrar Página Web','url'=>array('create')),
+	array('label'=>'Administrar Páginas Webs','url'=>array('admin')),
 );
 ?>
 
-<h1>Pagina Webs</h1>
+<h1>Páginas Webs</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

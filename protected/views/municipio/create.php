@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Municipios'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Municipio', 'url'=>array('index')),
-	array('label'=>'Manage Municipio', 'url'=>array('admin')),
+	array('label'=>'Listar Municipios', 'url'=>array('index')),
+	array('label'=>'Administrar Municipios', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Municipio</h1>
+<h1>Registrar Municipio</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

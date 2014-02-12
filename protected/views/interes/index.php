@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Interes','url'=>array('create')),
-	array('label'=>'Manage Interes','url'=>array('admin')),
+	array('label'=>'Registrar Interes','url'=>array('create')),
+	array('label'=>'Administar Intereses','url'=>array('admin')),
 );
 ?>
 
-<h1>Interes</h1>
+<h1>Intereses</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PuntoAcceso', 'url'=>array('index')),
-	array('label'=>'Create PuntoAcceso', 'url'=>array('create')),
-	array('label'=>'Update PuntoAcceso', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete PuntoAcceso', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage PuntoAcceso', 'url'=>array('admin')),
+	array('label'=>'Listar Antenas', 'url'=>array('index')),
+	array('label'=>'Registrar Antena', 'url'=>array('create')),
+	array('label'=>'Actualizar Antena', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Antena', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Antenas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View PuntoAcceso #<?php echo $model->id; ?></h1>
+<h1>Ver Antena #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

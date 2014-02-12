@@ -19,7 +19,7 @@ class SiteController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('general'),
+				'actions'=>array('general','ajaxGmapRadio','ajaxMenuRed','ajaxMenuPuntoAcceso','ajaxMenuZona'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -62,6 +62,7 @@ class SiteController extends Controller
 			$this->render('index',array(
 				'model'=>$model,
 				'puntoAcceso'=>$_GET["puntoAcceso"],
+				'login'=>$login,
 				));	
 		}else{
 			$this->render('index',array(
@@ -133,7 +134,7 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 			{
-				echo Yii::app()->user->checkAccess('Aplicacion'); 
+				 
 				if(Yii::app()->user->checkAccess('Aplicacion'))
 				{
 					$this->redirect(Yii::app()->getBaseUrl().'/site/general');
@@ -252,7 +253,95 @@ class SiteController extends Controller
 
 	public function actionGeneral()
 	{
-		$this->layout= '//layouts/ayuntamiento';
-		$this->render('general');		
+		$this->layout='//layouts/ayuntamiento';
+		$red=new Red('search');
+		$red->unsetAttributes();  // clear any default values
+		$this->render('general',array(
+			'red'=>$red,
+		));
+		
+	}
+
+	public function actionAjaxGmapRadio()
+	{
+		
+		$this->renderPartial('_gmap',array(
+			'mapaSeleccionado' => $_POST['mapaSeleccionado'],
+			'zonaSeleccionada' => $_POST['zonaSeleccionada'],
+		));
+		
+	}
+
+	public function actionAjaxMenuPuntoAcceso()
+	{
+		$puntoAcceso=new PuntoAcceso('search');
+		$puntoAcceso->unsetAttributes();  // clear any default values
+		$this->widget('bootstrap.widgets.TbGridView', array(
+		   	'id'=>'grid',
+		   	'type' => TbHtml::GRID_TYPE_STRIPED,
+			'dataProvider'=>$puntoAcceso->search(),
+			'filter'=>$puntoAcceso,
+			'columns'=>array(
+				'id',
+				'status',
+				'nombre',
+				'descripcionProducto',
+				'ipPublica',
+				'codigoProducto',
+				'mac',
+				'modelo',
+				'numeroSerial',
+				'lanIp',
+				'red_id',
+				'lat',
+				'lng',
+				
+			),
+		));
+	}
+	public function actionAjaxMenuRed()
+	{
+		$red=new Red('search');
+		$red->unsetAttributes();  // clear any default values
+		$this->widget('bootstrap.widgets.TbGridView', array(
+		   	'id'=>'grid',
+		   	'type' => TbHtml::GRID_TYPE_STRIPED,
+			'dataProvider'=>$red->search(),
+			'filter'=>$red,
+			'columns'=>array(
+				'id',
+				'nombre',
+				'descripcion',
+				'direccion',
+				'fecha_creacion',
+				'fecha_modificacion',
+				/*
+				'cancelado',
+				'zona_id',
+				*/
+				
+			),
+		));
+	}
+
+	public function actionAjaxMenuZona()
+	{
+		$zona=new ZonaCiudad('search');
+		$zona->unsetAttributes();  // clear any default values
+		$this->widget('bootstrap.widgets.TbGridView', array(
+		   	'id'=>'grid',
+		   	'type' => TbHtml::GRID_TYPE_STRIPED,
+			'dataProvider'=>$zona->search(),
+			'filter'=>$zona,
+			'columns'=>array(
+				'id',
+				'nombre',
+				'descripcion',
+				'fecha_creacion',
+				'fecha_modificacion',
+				'cancelado',
+				
+			),
+		));
 	}
 }

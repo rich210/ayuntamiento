@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PaginaWeb', 'url'=>array('index')),
-	array('label'=>'Create PaginaWeb', 'url'=>array('create')),
-	array('label'=>'Update PaginaWeb', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete PaginaWeb', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage PaginaWeb', 'url'=>array('admin')),
+	array('label'=>'Listar Páginas Webs', 'url'=>array('index')),
+	array('label'=>'Registrar Página Web', 'url'=>array('create')),
+	array('label'=>'Actualizar Página Web', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Página Web', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Páginas Webs', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View PaginaWeb #<?php echo $model->id; ?></h1>
+<h1>Ver Página Web #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

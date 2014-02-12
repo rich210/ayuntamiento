@@ -6,15 +6,15 @@
 <?php
 $this->breadcrumbs=array(
 	'Paises'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Pais', 'url'=>array('index')),
-	array('label'=>'Manage Pais', 'url'=>array('admin')),
+	array('label'=>'Listar Países', 'url'=>array('index')),
+	array('label'=>'Administrar Países', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Pais</h1>
+<h1>Registrar País</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

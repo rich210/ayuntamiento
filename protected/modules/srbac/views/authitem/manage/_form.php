@@ -17,27 +17,27 @@
 <div class="srbacForm">
 
   <p>
-    <?php echo Helper::translate('srbac','Los campos con')?> <span class="required">*</span>
-    <?php echo Helper::translate('srbac','son requeridos')?>.
+    <?php echo Helper::translate('srbac','Fields with')?> <span class="required">*</span>
+    <?php echo Helper::translate('srbac','are required')?>.
   </p>
   <?php echo SHtml::beginForm(); ?>
 
   <?php echo SHtml::errorSummary($model); ?>
 
   <div class="simple">
-    <?php echo SHtml::activeLabelEx($model,'Nombre'); ?>
+    <?php echo SHtml::activeLabelEx($model,'name'); ?>
     <?php echo SHtml::activeTextField($model,'name',
     $model->name == Helper::findModule('srbac')->superUser ?
     array('size'=>20,'disabled'=>"disabled"): array('size'=>20)); ?>
   </div>
   <div class="simple">
-    <?php echo SHtml::activeLabelEx($model,'Tipo'); ?>
+    <?php echo SHtml::activeLabelEx($model,'type'); ?>
     <?php echo SHtml::activeDropDownList($model,'type',AuthItem::$TYPES,
     $model->name == Helper::findModule('srbac')->superUser || $update
     ? array('disabled'=>"disabled"): array()); ?>
   </div>
   <div class="simple">
-    <?php echo SHtml::activeLabelEx($model,'Descripción'); ?>
+    <?php echo SHtml::activeLabelEx($model,'description'); ?>
     <?php echo SHtml::activeTextArea($model,'description',array('rows'=>3, 'cols'=>20)); ?>
   </div>
   <?php if(Yii::app()->user->hasFlash('updateSuccess')): ?>
@@ -45,7 +45,7 @@
        style="color:red;font-weight:bold;font-size:14px;text-align:center
        ;position:relative;border:solid black 2px;background-color:#DDDDDD"
        >
-           <?php echo "Actuaización exitosa"; ?>
+           <?php echo Yii::app()->user->getFlash('updateSuccess'); ?>
            <?php
            Yii::app()->clientScript->registerScript(
                'myHideEffect',
@@ -59,7 +59,7 @@
        style="color:red;font-weight:bold;font-size:14px;text-align:center
        ;position:relative;border:solid black 2px;background-color:#DDDDDD"
        >
-           <?php echo "Error en la actualizacón"; ?>
+           <?php echo Yii::app()->user->getFlash('updateError'); ?>
            <?php
            Yii::app()->clientScript->registerScript(
                'myHideEffect',
@@ -70,13 +70,13 @@
   </div>
   <?php endif; ?>
   <div class="simple">
-    <?php echo SHtml::activeLabelEx($model,'Regla de Negocios'); ?>
+    <?php echo SHtml::activeLabelEx($model,'bizrule'); ?>
     <?php echo SHtml::activeTextArea($model,'bizrule',
     $model->name == Helper::findModule('srbac')->superUser ?
     array('rows'=>3, 'cols'=>20, 'disabled'=>'disabled'):array('rows'=>3, 'cols'=>20)); ?>
   </div>
   <div class="simple">
-    <?php echo SHtml::activeLabelEx($model,'Datos'); ?>
+    <?php echo SHtml::activeLabelEx($model,'data'); ?>
     <?php echo SHtml::activeTextField($model,'data',
     $model->name == Helper::findModule('srbac')->superUser ?
     array('disabled'=>'disabled','size'=>30) : array('size'=>30)); ?>
@@ -85,8 +85,8 @@
   <div class="action">
     <?php
     echo SHtml::ajaxSubmitButton(
-    $update ? Helper::translate('srbac','Guardar') :
-    Helper::translate('srbac','Crear'),
+    $update ? Helper::translate('srbac','Save') :
+    Helper::translate('srbac','Create'),
     $update ? array('update','id'=>$model->name) : array('create') ,
     array(
     'type'=>'POST',

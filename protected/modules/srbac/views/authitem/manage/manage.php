@@ -32,14 +32,14 @@
 <div id="wizardButton" style="text-align:left" class="controlPanel marginBottom">
   <?php echo SHtml::ajaxLink(
                 SHtml::image($this->module->getIconsPath().'/admin.png',
-                    Helper::translate('srbac','Administrador de AuthItem'),
+                    Helper::translate('srbac','Manage AuthItem'),
                     array('class'=>'icon',
-                      'title'=>Helper::translate('srbac','Administrador AuthItem'),
+                      'title'=>Helper::translate('srbac','Manage AuthItem'),
                       'border'=>0
                       )
                 )." " .
                 ($this->module->iconText ?
-                Helper::translate('srbac','Administrador AuthItem') :
+                Helper::translate('srbac','Manage AuthItem') :
                 ""),
                 array('manage','full'=>true),
                 array(
@@ -62,12 +62,12 @@
                 SHtml::image($this->module->getIconsPath().'/wizard.png',
                 Helper::translate('srbac','Autocreate Auth Items'),
                 array('class'=>'icon',
-                  'title'=>Helper::translate('srbac','Autocrear items de autorizacion'),
+                  'title'=>Helper::translate('srbac','Autocreate Auth Items'),
                   'border'=>0
                   )
                 )." " .
                 ($this->module->iconText ?
-                Helper::translate('srbac','Autocrear items de autorizacion') :
+                Helper::translate('srbac','Autocreate Auth Items') :
                 ""),
                 array('auto'),
                 array(
@@ -88,14 +88,14 @@
   ?>
   <?php echo SHtml::ajaxLink(
                 SHtml::image($this->module->getIconsPath().'/allow.png',
-                Helper::translate('srbac','Editar lista siempre permitido'),
+                Helper::translate('srbac','Edit always allowed list'),
                 array('class'=>'icon',
-                  'title'=>Helper::translate('srbac','Editar lista siempre permitido'),
+                  'title'=>Helper::translate('srbac','Edit always allowed list'),
                   'border'=>0
                   )
                 )." " .
                 ($this->module->iconText ?
-                Helper::translate('srbac','Editar lista siempre permitido') :
+                Helper::translate('srbac','Edit always allowed list') :
                 ""),
                 array('editAllowed'),
                 array(
@@ -118,12 +118,12 @@
                 SHtml::image($this->module->getIconsPath().'/eraser.png',
                 Helper::translate('srbac','Clear obsolete authItems'),
                 array('class'=>'icon',
-                  'title'=>Helper::translate('srbac','Limpiar items de autoridad obsoletos'),
+                  'title'=>Helper::translate('srbac','Clear obsolete authItems'),
                   'border'=>0
                   )
                 )." " .
                 ($this->module->iconText ?
-                Helper::translate('srbac','Limpiar items de autoridad obsoletos') :
+                Helper::translate('srbac','Clear obsolete authItems') :
                 ""),
                 array('clearObsolete'),
                 array(
@@ -148,8 +148,8 @@
 <div id="wizard">
   <table class="srbacDataGrid" align="center">
     <tr>
-      <th width="50%"><?php echo Helper::translate("srbac","Objetos de Autorización");?></th>
-      <th><?php echo Helper::translate('srbac','Accion')?></th>
+      <th width="50%"><?php echo Helper::translate("srbac","Auth items");?></th>
+      <th><?php echo Helper::translate('srbac','Actions')?></th>
     </tr>
     <tr>
       <td style="vertical-align: top;text-align: center">

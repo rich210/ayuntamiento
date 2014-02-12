@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create TipoEvento','url'=>array('create')),
-	array('label'=>'Manage TipoEvento','url'=>array('admin')),
+	array('label'=>'Registrar Tipo de Evento','url'=>array('create')),
+	array('label'=>'Administrar Tipos de Eventos','url'=>array('admin')),
 );
 ?>
 
-<h1>Tipo Eventos</h1>
+<h1>Tipos de Eventos</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

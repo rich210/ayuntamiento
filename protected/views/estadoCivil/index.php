@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Estado Civils',
+	'Estados Civiles',
 );
 
 $this->menu=array(
-	array('label'=>'Create EstadoCivil','url'=>array('create')),
-	array('label'=>'Manage EstadoCivil','url'=>array('admin')),
+	array('label'=>'Registrar Estado Civil','url'=>array('create')),
+	array('label'=>'Administrar Estados Civiles','url'=>array('admin')),
 );
 ?>
 
-<h1>Estado Civils</h1>
+<h1>Estados Civiles</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

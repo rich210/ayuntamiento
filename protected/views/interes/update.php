@@ -7,17 +7,17 @@
 $this->breadcrumbs=array(
 	'Interes'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Interes', 'url'=>array('index')),
-	array('label'=>'Create Interes', 'url'=>array('create')),
-	array('label'=>'View Interes', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Interes', 'url'=>array('admin')),
+	array('label'=>'Listar Intereses', 'url'=>array('index')),
+	array('label'=>'Registrar Interes', 'url'=>array('create')),
+	array('label'=>'Ver Interes', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Intereses', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Interes <?php echo $model->id; ?></h1>
+    <h1>Actualizar Interes <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

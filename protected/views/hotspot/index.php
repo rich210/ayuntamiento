@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Hotspot','url'=>array('create')),
-	array('label'=>'Manage Hotspot','url'=>array('admin')),
+	array('label'=>'Registrar Hotspot','url'=>array('create')),
+	array('label'=>'Administrar Hotspots','url'=>array('admin')),
 );
 ?>
 

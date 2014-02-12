@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create EventLog','url'=>array('create')),
-	array('label'=>'Manage EventLog','url'=>array('admin')),
+	array('label'=>'Registrar EventLog','url'=>array('create')),
+	array('label'=>'Administrar Event Log','url'=>array('admin')),
 );
 ?>
 

@@ -7,14 +7,14 @@
 $this->breadcrumbs=array(
 	'Event Logs'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List EventLog', 'url'=>array('index')),
-	array('label'=>'Create EventLog', 'url'=>array('create')),
-	array('label'=>'View EventLog', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage EventLog', 'url'=>array('admin')),
+	array('label'=>'Listar Event Log', 'url'=>array('index')),
+	array('label'=>'Registrar Event Log', 'url'=>array('create')),
+	array('label'=>'Ver Event Log', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Event Log', 'url'=>array('admin')),
 );
 ?>
 

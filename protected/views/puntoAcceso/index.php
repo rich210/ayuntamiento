@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create PuntoAcceso','url'=>array('create')),
-	array('label'=>'Manage PuntoAcceso','url'=>array('admin')),
+	array('label'=>'Registrar Antena','url'=>array('create')),
+	array('label'=>'Administrar Antenas','url'=>array('admin')),
 );
 ?>
 
-<h1>Punto Accesos</h1>
+<h1>Antenas</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

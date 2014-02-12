@@ -1,0 +1,7 @@
+
+<?php
+$layout = Hotspot::model()->find();
+$login = login();
+
+$htmlFull = str_replace("%contenido%",$login,$layout);
+?>

@@ -6,12 +6,12 @@
 <?php
 $this->breadcrumbs=array(
 	'Hotspots'=>array('index'),
-	'Create',
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Hotspot', 'url'=>array('index')),
-	array('label'=>'Manage Hotspot', 'url'=>array('admin')),
+	array('label'=>'Listar Hotspots', 'url'=>array('index')),
+	array('label'=>'Administrar Hotspots', 'url'=>array('admin')),
 );
 ?>
 

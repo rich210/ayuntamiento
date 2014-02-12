@@ -7,17 +7,17 @@
 $this->breadcrumbs=array(
 	'Pagina Interes Reds'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List PaginaInteresRed', 'url'=>array('index')),
-	array('label'=>'Create PaginaInteresRed', 'url'=>array('create')),
-	array('label'=>'View PaginaInteresRed', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage PaginaInteresRed', 'url'=>array('admin')),
+	array('label'=>'Listar Páginas Intereses Parques', 'url'=>array('index')),
+	array('label'=>'Registrar Páguina Interés Parque', 'url'=>array('create')),
+	array('label'=>'Ver Páguina Interés Parque', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Páginas Intereses Parques', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update PaginaInteresRed <?php echo $model->id; ?></h1>
+    <h1>Actualizar Páguina Interés Parque <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

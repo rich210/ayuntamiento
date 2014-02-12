@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create PaginaInteresRed','url'=>array('create')),
-	array('label'=>'Manage PaginaInteresRed','url'=>array('admin')),
+	array('label'=>'Registrar Página Interés Parque','url'=>array('create')),
+	array('label'=>'Manage Página Interés Parque','url'=>array('admin')),
 );
 ?>
 
-<h1>Pagina Interes Reds</h1>
+<h1>Páginas Intereses Parques</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

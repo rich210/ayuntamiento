@@ -5,20 +5,20 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Equipo Conexions'=>array('index'),
+	'Equipos de Conexión'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List EquipoConexion', 'url'=>array('index')),
-	array('label'=>'Create EquipoConexion', 'url'=>array('create')),
-	array('label'=>'Update EquipoConexion', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete EquipoConexion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage EquipoConexion', 'url'=>array('admin')),
+	array('label'=>'Listar Equipos de Conexión', 'url'=>array('index')),
+	array('label'=>'Registrar Equipos de Conexión', 'url'=>array('create')),
+	array('label'=>'Actualizar Equipo de Conexión', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Equipo de Conexión', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Equipos de Conexión', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View EquipoConexion #<?php echo $model->id; ?></h1>
+<h1>Ver Equipo de Conexión #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

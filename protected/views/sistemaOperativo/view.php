@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List SistemaOperativo', 'url'=>array('index')),
-	array('label'=>'Create SistemaOperativo', 'url'=>array('create')),
-	array('label'=>'Update SistemaOperativo', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete SistemaOperativo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage SistemaOperativo', 'url'=>array('admin')),
+	array('label'=>'Listar Sistemas Operativos', 'url'=>array('index')),
+	array('label'=>'Registrar Sistema Operativo', 'url'=>array('create')),
+	array('label'=>'Actualizar Sistema Operativo', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Sistema Operativo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Sistemas Operativos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View SistemaOperativo #<?php echo $model->id; ?></h1>
+<h1>Ver Sistema Operativo #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List PaginaInteresRed', 'url'=>array('index')),
-	array('label'=>'Create PaginaInteresRed', 'url'=>array('create')),
-	array('label'=>'Update PaginaInteresRed', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete PaginaInteresRed', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage PaginaInteresRed', 'url'=>array('admin')),
+	array('label'=>'Listar Páginas Intereses Parques', 'url'=>array('index')),
+	array('label'=>'Registrar Páquina Interés Parque', 'url'=>array('create')),
+	array('label'=>'Actualizar Páquina Interés Parque', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Páquina Interés Parque', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Páginas Intereses Parques', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View PaginaInteresRed #<?php echo $model->id; ?></h1>
+<h1>Ver Páquina Interés Parque #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

@@ -5,19 +5,19 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nacionalidads'=>array('index'),
+	'Nacionalidades'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Nacionalidad', 'url'=>array('index')),
-	array('label'=>'Create Nacionalidad', 'url'=>array('create')),
-	array('label'=>'View Nacionalidad', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Nacionalidad', 'url'=>array('admin')),
+	array('label'=>'Listar Nacionalidades', 'url'=>array('index')),
+	array('label'=>'Registrar Nacionalidad', 'url'=>array('create')),
+	array('label'=>'Ver Nacionalidad', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Nacionalidad', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Nacionalidad <?php echo $model->id; ?></h1>
+    <h1>Actualizar Nacionalidad <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

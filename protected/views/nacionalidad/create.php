@@ -5,16 +5,16 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nacionalidads'=>array('index'),
-	'Create',
+	'Nacionalidades'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Nacionalidad', 'url'=>array('index')),
-	array('label'=>'Manage Nacionalidad', 'url'=>array('admin')),
+	array('label'=>'Listar Nacionalidades', 'url'=>array('index')),
+	array('label'=>'Administrar Nacionalidades', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Nacionalidad</h1>
+<h1>Registrar Nacionalidad</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

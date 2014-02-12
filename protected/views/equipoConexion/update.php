@@ -5,19 +5,19 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Equipo Conexions'=>array('index'),
+	'Equipo de Conexión'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List EquipoConexion', 'url'=>array('index')),
-	array('label'=>'Create EquipoConexion', 'url'=>array('create')),
-	array('label'=>'View EquipoConexion', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage EquipoConexion', 'url'=>array('admin')),
+	array('label'=>'Listar Equipos de Conexión', 'url'=>array('index')),
+	array('label'=>'Registrar Equipo de Conexión', 'url'=>array('create')),
+	array('label'=>'Ver Equipo de Conexión', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrador Equipos de Conexión', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update EquipoConexion <?php echo $model->id; ?></h1>
+    <h1>Actualizar Equipo de Conexión <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -7,17 +7,17 @@
 $this->breadcrumbs=array(
 	'Reds'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Red', 'url'=>array('index')),
-	array('label'=>'Create Red', 'url'=>array('create')),
-	array('label'=>'View Red', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Red', 'url'=>array('admin')),
+	array('label'=>'Listar Parques', 'url'=>array('index')),
+	array('label'=>'Registrar Parque', 'url'=>array('create')),
+	array('label'=>'Ver Parque', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Parques', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Red <?php echo $model->id; ?></h1>
+    <h1>Actualizar Parque <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

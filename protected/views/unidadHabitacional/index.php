@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create UnidadHabitacional','url'=>array('create')),
-	array('label'=>'Manage UnidadHabitacional','url'=>array('admin')),
+	array('label'=>'Registrar Unidad Habitacional','url'=>array('create')),
+	array('label'=>'Administrar Unidades Habitacionales','url'=>array('admin')),
 );
 ?>
 
-<h1>Unidad Habitacionals</h1>
+<h1>Unidades Habitacionales</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

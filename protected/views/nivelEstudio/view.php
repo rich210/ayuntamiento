@@ -5,20 +5,20 @@
 
 <?php
 $this->breadcrumbs=array(
-	'Nivel Estudios'=>array('index'),
+	'Niveles de Estudios'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List NivelEstudio', 'url'=>array('index')),
-	array('label'=>'Create NivelEstudio', 'url'=>array('create')),
-	array('label'=>'Update NivelEstudio', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete NivelEstudio', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage NivelEstudio', 'url'=>array('admin')),
+	array('label'=>'Listar Niveles de Estudios', 'url'=>array('index')),
+	array('label'=>'Registrar Nivel de Estudio', 'url'=>array('create')),
+	array('label'=>'Actualizar Nivel de Estudio', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar Nivel de Estudio', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administrar Niveles de Estudios', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View NivelEstudio #<?php echo $model->id; ?></h1>
+<h1>Ver Nivel de Estudio #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(
